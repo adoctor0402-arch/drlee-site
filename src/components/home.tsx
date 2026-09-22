@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { approach, firstVisitSteps, labItems, noteCategories, now, sampleNotes, topics } from "@/config/content";
 import { site } from "@/config/site";
@@ -59,9 +60,17 @@ export function Hero() {
           <div className="overflow-hidden rounded-[40px] shadow-[0_40px_80px_-40px_rgba(10,20,40,0.7)] ring-1 ring-white/15">
             <Sticker name="hero" eager />
           </div>
-          <p className="absolute -bottom-5 right-4 rotate-[-3deg] rounded-2xl bg-ivory px-4 py-2.5 font-hand text-lg text-deep shadow-[0_12px_30px_-12px_rgba(10,20,40,0.5)] sm:right-6 sm:text-xl">
-            李俊逸 醫師｜台中總院・板橋分院
-          </p>
+          {/* 真人名牌：把插畫和真人連在一起 */}
+          <Link
+            href="/about"
+            className="absolute -bottom-6 right-3 flex rotate-[-2deg] items-center gap-3 rounded-full bg-ivory py-2 pl-2 pr-5 text-deep shadow-[0_14px_34px_-12px_rgba(10,20,40,0.55)] transition-transform hover:rotate-0 sm:right-6"
+          >
+            <Image src={site.avatar} alt="李俊逸醫師" width={52} height={52} className="h-12 w-12 rounded-full object-cover ring-2 ring-sun sm:h-[52px] sm:w-[52px]" />
+            <span className="leading-tight">
+              <span className="block font-serif text-[15px] font-semibold sm:text-base">李俊逸 醫師 <span className="font-display text-sm italic text-gold">Dr. Lee</span></span>
+              <span className="block text-xs text-muted">台中總院・板橋分院</span>
+            </span>
+          </Link>
         </div>
 
         <div className="flex flex-col gap-3 pt-6 animate-fade-up [animation-delay:350ms] sm:flex-row lg:col-start-1 lg:row-start-2 lg:self-start lg:pt-0">
@@ -374,6 +383,50 @@ export function ClosingCTA() {
             <Link href="#first-visit" className={buttonClass("ghost")}>
               了解第一次門診
             </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------------------------------------------------------- Meet Dr. Lee（真人信任區） */
+export function MeetDrLee() {
+  return (
+    <section className="relative overflow-hidden bg-mist/50 py-20 sm:py-24">
+      <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 md:grid-cols-[0.8fr_1.2fr] lg:gap-16 lg:px-10">
+        <div className="relative mx-auto w-full max-w-[340px]">
+          <div className="overflow-hidden rounded-t-[200px] rounded-b-[32px] bg-[#e9e9ea] shadow-[0_30px_60px_-30px_rgba(23,54,93,0.45)]">
+            <Image src={site.photo} alt="李俊逸醫師穿著白袍的正式照片" width={719} height={1040} className="h-auto w-full" />
+          </div>
+          <span className="absolute -right-3 top-6 rotate-12 text-sun">
+            <Crown className="h-9 w-10" stroke="#EFC75E" />
+          </span>
+        </div>
+        <div>
+          <Eyebrow>Meet Dr. Lee</Eyebrow>
+          <h2 className="mt-3 font-serif text-3xl font-semibold leading-snug text-deep sm:text-4xl">
+            插畫裡的小王子，
+            <br />
+            診間裡的李俊逸醫師。
+          </h2>
+          <p className="mt-2 font-display text-lg italic tracking-wide text-gold">{site.nameEnFull}</p>
+          <ul className="mt-6 flex flex-wrap gap-2">
+            {site.roles.map((r) => (
+              <li key={r} className="rounded-full border border-deep/10 bg-white px-4 py-1.5 text-sm text-ink/80">
+                {r}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-6 max-w-xl text-[16px] leading-[1.95] text-ink/75">
+            我相信生殖醫學可以很專業，也可以很溫柔。把複雜的檢查和數據講清楚，陪你一起找到最適合自己的下一步。
+          </p>
+          <p className="mt-4 font-hand text-2xl text-deep/85">每一個生命，都是獨一無二的星星 <span className="text-blush">♥</span></p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Link href="/about" className={buttonClass("ghost")}>
+              認識 Dr. Lee <span aria-hidden>→</span>
+            </Link>
+            <BookingButton />
           </div>
         </div>
       </div>

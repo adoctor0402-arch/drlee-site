@@ -8,8 +8,12 @@ export const site = {
   tagline: "讓生殖醫學變得溫柔、清楚、值得信任",
   slogan: "More Families · A Brighter Tomorrow",
   promise: "用醫學，守護每一個期待",
-  // 換成真人照片：把照片放到 public/images/ 後改這個路徑（建議直式 4:5，至少 1200×1500）
-  heroImage: "/images/dr-lee-placeholder.svg",
+  nameEnFull: "Dr. Lee Chun-I",
+  // 真人照片
+  photo: "/images/dr-lee.webp",
+  avatar: "/images/dr-lee-avatar.webp",
+  // 關於我：身分與經歷（上線前請確認用詞與正式頭銜）
+  roles: ["茂盛醫院 生殖醫學醫師", "茂盛醫院 板橋分院 執行長", "醫學大學 教授"],
   // 品牌插畫（Ben 提供的小王子醫師插畫）
   art: {
     hero: "/images/prince/hero.webp",

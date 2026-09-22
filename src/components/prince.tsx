@@ -5,7 +5,7 @@ import { site } from "@/config/site";
 type ArtKey = keyof typeof site.art;
 
 const sizes: Record<ArtKey, [number, number]> = {
-  hero: [838, 812],
+  hero: [1254, 1254],
   embryo: [414, 436],
   ultrasound: [414, 374],
   books: [380, 375],
