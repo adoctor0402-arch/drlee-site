@@ -12,6 +12,7 @@ import "@fontsource/noto-serif-tc/600.css";
 import "@fontsource/cormorant-garamond/500.css";
 import "@fontsource/cormorant-garamond/600.css";
 import "@fontsource/cormorant-garamond/500-italic.css";
+import "@fontsource/lxgw-wenkai-tc/400.css";
 import "./globals.css";
 
 export const metadata: Metadata = {

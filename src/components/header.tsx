@@ -25,7 +25,7 @@ export function Header() {
   return (
     <header
       className={`sticky top-0 z-40 transition-[background,box-shadow] duration-500 ${
-        scrolled || menu ? "bg-ivory/90 shadow-[0_1px_0_rgba(23,54,93,0.08)] backdrop-blur-md" : "bg-transparent"
+        scrolled || menu ? "bg-ivory/90 shadow-[0_1px_0_rgba(23,54,93,0.08)] backdrop-blur-md" : "bg-ivory"
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:h-20 lg:px-10">

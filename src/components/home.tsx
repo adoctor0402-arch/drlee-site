@@ -1,49 +1,51 @@
-import Image from "next/image";
 import Link from "next/link";
 import { approach, firstVisitSteps, labItems, noteCategories, now, sampleNotes, topics } from "@/config/content";
-import { branches, site } from "@/config/site";
+import { site } from "@/config/site";
 import { BookingButton } from "./booking";
 import { buttonClass } from "./button-class";
-import { Sparkle, TopicIcon } from "./icons";
-import { PrinceOnPlanet, Starfield } from "./prince";
+import { TopicIcon } from "./icons";
+import { Crown } from "./logo";
+import { Starfield, Sticker, Twinkle } from "./prince";
 
 function Eyebrow({ children, light = false }: { children: React.ReactNode; light?: boolean }) {
   return (
     <p className={`flex items-center gap-2 font-display text-[15px] italic tracking-[0.18em] ${light ? "text-gold-soft" : "text-gold"}`}>
-      <Sparkle className="h-2.5 w-2.5" />
+      <Twinkle className="h-3 w-3" />
       {children}
     </p>
   );
 }
 
-/* ---------------------------------------------------------------- Hero §10–11 */
+/* ---------------------------------------------------------------- Hero §10–11（V1.1：品牌插畫夜空版） */
 export function Hero() {
   return (
-    <section className="relative -mt-16 overflow-hidden pt-16 lg:-mt-20 lg:pt-20">
-      {/* soft celestial backdrop */}
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_78%_30%,#DCE8F2_0%,rgba(220,232,242,0)_55%),radial-gradient(ellipse_at_10%_90%,#F1ECE2_0%,rgba(241,236,226,0)_50%)]" />
-      <Starfield className="absolute inset-0 -z-10" />
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#22385F_0%,#2E4A7E_48%,#5F73A3_82%,#8C95B1_100%)] text-ivory">
+      <Starfield light className="absolute inset-0" />
+      {/* 地平線的暖光，呼應插畫裡的日出 */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-[radial-gradient(ellipse_at_70%_100%,rgba(251,233,199,0.55)_0%,rgba(251,233,199,0)_60%)]" aria-hidden />
 
-      {/* 手機順序（§26）：標語 → 醫師照片 → 按鈕；桌機：左文右圖 */}
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 pb-16 pt-6 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:grid-rows-[auto_auto] lg:gap-x-8 lg:gap-y-9 lg:px-10 lg:pb-28 lg:pt-14">
+      <div className="relative mx-auto grid max-w-7xl gap-8 px-4 pb-14 pt-10 sm:px-6 lg:grid-cols-[1fr_1.05fr] lg:grid-rows-[auto_auto] lg:gap-x-10 lg:gap-y-9 lg:px-10 lg:pb-24 lg:pt-16">
         {/* Copy */}
         <div className="animate-fade-up lg:col-start-1 lg:row-start-1 lg:self-end">
-          <p className="font-display text-[13px] font-semibold uppercase tracking-[0.32em] text-deep/60 sm:text-sm">
-            More Life <span className="mx-1.5 text-gold">·</span> A Kinder Tomorrow
+          <p className="font-display text-[13px] font-semibold uppercase tracking-[0.3em] text-ivory/70 sm:text-sm">
+            {site.slogan}
           </p>
-          <p className="mt-6 font-serif text-lg font-semibold tracking-[0.2em] text-gold sm:text-xl">小王子醫師</p>
-          <h1 className="mt-3 font-serif text-[34px] font-semibold leading-[1.35] text-deep sm:text-5xl sm:leading-[1.3] lg:text-[56px]">
+          <p className="mt-6 flex items-center gap-2 font-hand text-2xl text-sun sm:text-[28px]">
+            嗨，我是小王子醫師
+            <Crown className="h-6 w-7 -translate-y-2 rotate-12" stroke="#EFC75E" />
+          </p>
+          <h1 className="mt-3 font-serif text-[34px] font-semibold leading-[1.35] sm:text-5xl sm:leading-[1.3] lg:text-[54px]">
             讓生殖醫學變得
             <br />
             溫柔、清楚、
             <span className="relative whitespace-nowrap">
               值得信任
               <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 10" preserveAspectRatio="none" aria-hidden>
-                <path d="M2 7 C 50 2, 150 2, 198 6" stroke="#C6A15B" strokeWidth="2" fill="none" strokeLinecap="round" />
+                <path d="M2 7 C 50 2, 150 2, 198 6" stroke="#EFC75E" strokeWidth="2.2" fill="none" strokeLinecap="round" />
               </svg>
             </span>
           </h1>
-          <p className="mt-7 max-w-md text-[16px] leading-[1.95] text-ink/75 sm:text-[17px]">
+          <p className="mt-7 max-w-md text-[16px] leading-[1.95] text-ivory/80 sm:text-[17px]">
             以專業為引導，以溫柔為初心，
             <br />
             陪你走過備孕路上的每一個問號，
@@ -52,41 +54,19 @@ export function Hero() {
           </p>
         </div>
 
-        {/* Visual: real doctor + subtle celestial elements */}
-        <div className="relative mx-auto w-full max-w-[460px] animate-fade-up [animation-delay:200ms] lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:max-w-none lg:self-center">
-          <div className="relative mx-auto aspect-[4/5] w-[82%] lg:w-[78%]">
-            {/* orbit ring behind */}
-            <div className="absolute -inset-[9%] rounded-full border border-dashed border-gold/40 animate-orbit" aria-hidden>
-              <span className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 text-gold">
-                <Sparkle className="h-3.5 w-3.5" />
-              </span>
-            </div>
-            <div className="relative h-full overflow-hidden rounded-t-full rounded-b-[36px] bg-mist shadow-[0_40px_80px_-40px_rgba(23,54,93,0.45)]">
-              <Image
-                src={site.heroImage}
-                alt="李俊逸醫師（小王子醫師 Dr. Lee）"
-                fill
-                sizes="(min-width: 1024px) 40vw, 80vw"
-                loading="eager"
-                fetchPriority="high"
-                className="object-cover"
-              />
-            </div>
-            {/* name plate */}
-            <div className="absolute -right-4 bottom-10 rounded-2xl bg-ivory/95 px-4 py-3 shadow-[0_12px_30px_-12px_rgba(23,54,93,0.35)] backdrop-blur sm:-right-8">
-              <p className="font-serif text-[15px] font-semibold text-deep">李俊逸 醫師</p>
-              <p className="mt-0.5 text-xs text-muted">茂盛醫院｜{branches.map((b) => b.name).join("・")}</p>
-            </div>
+        {/* Visual: 品牌主視覺插畫，邊緣柔化融入夜空 */}
+        <div className="relative mx-auto w-full max-w-[520px] animate-fade-up [animation-delay:200ms] lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:max-w-none lg:self-center">
+          <div className="overflow-hidden rounded-[40px] shadow-[0_40px_80px_-40px_rgba(10,20,40,0.7)] ring-1 ring-white/15">
+            <Sticker name="hero" eager />
           </div>
-          {/* the guide */}
-          <div className="absolute -bottom-6 -left-4 w-[46%] animate-float sm:-left-8 lg:-bottom-10 lg:-left-8 lg:w-[46%]">
-            <PrinceOnPlanet />
-          </div>
+          <p className="absolute -bottom-5 right-4 rotate-[-3deg] rounded-2xl bg-ivory px-4 py-2.5 font-hand text-lg text-deep shadow-[0_12px_30px_-12px_rgba(10,20,40,0.5)] sm:right-6 sm:text-xl">
+            李俊逸 醫師｜台中總院・板橋分院
+          </p>
         </div>
 
-        <div className="flex flex-col gap-3 animate-fade-up [animation-delay:350ms] sm:flex-row lg:col-start-1 lg:row-start-2 lg:self-start">
-          <BookingButton />
-          <Link href="#first-visit" className={buttonClass("ghost")}>
+        <div className="flex flex-col gap-3 pt-6 animate-fade-up [animation-delay:350ms] sm:flex-row lg:col-start-1 lg:row-start-2 lg:self-start lg:pt-0">
+          <BookingButton variant="sun" />
+          <Link href="#first-visit" className={buttonClass("ghostLight")}>
             了解第一次門診
           </Link>
         </div>
@@ -98,14 +78,19 @@ export function Hero() {
 /* ---------------------------------------------------------------- 我可以怎麼幫你 §13 */
 export function HelpSection() {
   return (
-    <section id="help" className="bg-white/60 py-20 sm:py-28">
+    <section id="help" className="bg-white pb-20 pt-16 sm:pb-28 sm:pt-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
-        <div className="max-w-2xl">
-          <Eyebrow>How can I help</Eyebrow>
-          <h2 className="mt-3 font-serif text-3xl font-semibold leading-snug text-deep sm:text-4xl">我可以怎麼幫你？</h2>
-          <p className="mt-4 text-[16px] leading-relaxed text-muted">
-            你不需要先知道醫學名詞。從你現在最在意的那件事開始就好。
-          </p>
+        <div className="flex items-end justify-between gap-6">
+          <div className="max-w-2xl pb-2">
+            <Eyebrow>How can I help</Eyebrow>
+            <h2 className="mt-3 font-serif text-3xl font-semibold leading-snug text-deep sm:text-4xl">我可以怎麼幫你？</h2>
+            <p className="mt-4 text-[16px] leading-relaxed text-muted">
+              你不需要先知道醫學名詞。從你現在最在意的那件事開始就好。
+            </p>
+          </div>
+          <div className="hidden w-52 shrink-0 sm:block lg:w-60">
+            <Sticker name="embryo" />
+          </div>
         </div>
 
         <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
@@ -116,7 +101,7 @@ export function HelpSection() {
                 className="group relative flex h-full flex-col rounded-3xl border border-deep/[0.07] bg-ivory p-7 transition-all duration-500 hover:-translate-y-1 hover:border-gold/50 hover:bg-white hover:shadow-[0_24px_50px_-30px_rgba(23,54,93,0.35)]"
               >
                 <div className="flex items-start justify-between">
-                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-mist/70 text-deep transition-colors group-hover:bg-deep group-hover:text-gold-soft">
+                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-mist/70 text-deep transition-colors group-hover:bg-deep group-hover:text-sun">
                     <TopicIcon name={t.icon} className="h-6 w-6" />
                   </span>
                   <span className="font-display text-lg italic text-deep/25">{String(i + 1).padStart(2, "0")}</span>
@@ -148,8 +133,11 @@ export function FirstVisit() {
             <br />
             不需要準備好所有答案。
           </h2>
-          <p className="mt-6 border-l-2 border-gold pl-5 font-serif text-xl text-deep/80">帶著你的故事來就好。</p>
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
+          <p className="mt-6 font-hand text-2xl text-deep/85">帶著你的故事來就好 <span className="text-blush">♥</span></p>
+          <div className="mt-6 w-56 sm:w-64">
+            <Sticker name="ultrasound" />
+          </div>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
             <Link href="/first-visit" className={buttonClass("ghost")}>
               第一次門診要準備什麼 <span aria-hidden>→</span>
             </Link>
@@ -179,7 +167,8 @@ export function FirstVisit() {
 /* ---------------------------------------------------------------- Trust §15 */
 export function Approach() {
   return (
-    <section className="relative overflow-hidden bg-deep py-20 text-ivory sm:py-28">
+    <section className="relative overflow-hidden bg-night py-20 text-ivory sm:py-28">
+      <Starfield light className="absolute inset-0 opacity-60" />
       <div className="pointer-events-none absolute -right-40 -top-40 h-[520px] w-[520px] rounded-full border border-gold/15" aria-hidden />
       <div className="pointer-events-none absolute -right-20 -top-20 h-[360px] w-[360px] rounded-full border border-gold/10" aria-hidden />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
@@ -190,7 +179,7 @@ export function Approach() {
 
         <div className="mt-14 grid gap-px overflow-hidden rounded-3xl bg-white/10 sm:grid-cols-2">
           {approach.map((a) => (
-            <div key={a.n} className="bg-deep p-8 sm:p-10">
+            <div key={a.n} className="bg-night p-8 sm:p-10">
               <span className="font-display text-sm italic tracking-[0.2em] text-gold">{a.n}</span>
               <h3 className="mt-3 font-serif text-2xl font-semibold leading-snug">{a.title}</h3>
               <p className="mt-3 text-[15.5px] leading-[1.9] text-ivory/70">{a.body}</p>
@@ -212,7 +201,7 @@ export function Approach() {
           <p className="font-display text-2xl italic leading-relaxed text-gold-soft sm:text-3xl">
             Science can be rational. Care should still feel human.
           </p>
-          <p className="mt-3 font-serif text-lg text-ivory/80">科學可以很理性，醫療應該很溫柔。</p>
+          <p className="mt-4 font-hand text-2xl text-ivory/90">科學可以很理性，醫療應該很溫柔。</p>
         </blockquote>
       </div>
     </section>
@@ -225,9 +214,15 @@ export function Notes() {
     <section className="py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
-          <div>
-            <Eyebrow>Fertility Notes</Eyebrow>
-            <h2 className="mt-3 font-serif text-3xl font-semibold text-deep sm:text-4xl">小王子的備孕筆記</h2>
+          <div className="flex items-end gap-4">
+            <div className="w-28 shrink-0 sm:w-40">
+              <Sticker name="books" />
+            </div>
+            <div className="pb-3">
+              <Eyebrow>Fertility Notes</Eyebrow>
+              <h2 className="mt-3 font-serif text-3xl font-semibold text-deep sm:text-4xl">小王子的備孕筆記</h2>
+              <p className="mt-2 font-hand text-lg text-muted">持續學習，只為了更多幸福</p>
+            </div>
           </div>
           <Link href="/notes" className="inline-flex items-center gap-1.5 text-[15px] font-medium text-deep hover:text-gold">
             看全部筆記 <span aria-hidden>→</span>
@@ -311,9 +306,9 @@ export function LabTeaser() {
       <div className="mx-auto grid max-w-7xl gap-5 px-4 sm:px-6 lg:grid-cols-[1.4fr_1fr] lg:px-10">
         <Link
           href="/lab"
-          className="group relative overflow-hidden rounded-3xl bg-deep-2 p-8 text-ivory sm:p-12"
+          className="group relative overflow-hidden rounded-3xl bg-[linear-gradient(160deg,#22385F,#2E4A7E)] p-8 text-ivory sm:p-12"
         >
-          <Starfield className="absolute inset-0 opacity-60 invert" />
+          <Starfield light className="absolute inset-0 opacity-70" />
           <div className="relative">
             <Eyebrow light>For the curious</Eyebrow>
             <h2 className="mt-3 font-display text-4xl font-semibold tracking-wide sm:text-5xl">Dr. Lee Lab</h2>
@@ -361,23 +356,25 @@ export function LabTeaser() {
 /* ---------------------------------------------------------------- Closing CTA §22 */
 export function ClosingCTA() {
   return (
-    <section className="relative overflow-hidden bg-mist/60 py-20 sm:py-24">
-      <Starfield className="absolute inset-0" />
-      <div className="relative mx-auto flex max-w-4xl flex-col items-center px-4 text-center sm:px-6">
-        <div className="w-28 sm:w-32">
-          <PrinceOnPlanet />
+    <section className="relative overflow-hidden bg-white py-16 sm:py-24">
+      <div className="relative mx-auto grid max-w-6xl items-center gap-6 px-4 sm:px-6 md:grid-cols-[1fr_1.1fr] lg:gap-12">
+        <div className="mx-auto w-full max-w-md md:order-2">
+          <Sticker name="plane" />
         </div>
-        <h2 className="mt-4 font-serif text-2xl font-semibold leading-relaxed text-deep sm:text-[32px]">
-          了解現在的位置，
-          <br className="sm:hidden" />
-          才能做出適合自己的下一步。
-        </h2>
-        <p className="mt-4 text-[15.5px] text-muted">台中總院・板橋分院 皆有門診</p>
-        <div className="mt-8 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row">
-          <BookingButton />
-          <Link href="#first-visit" className={buttonClass("ghost")}>
-            了解第一次門診
-          </Link>
+        <div className="text-center md:text-left">
+          <Eyebrow>Next Step</Eyebrow>
+          <h2 className="mt-3 font-serif text-2xl font-semibold leading-relaxed text-deep sm:text-[32px]">
+            了解現在的位置，
+            <br />
+            才能做出適合自己的下一步。
+          </h2>
+          <p className="mt-4 text-[15.5px] text-muted">台中總院・板橋分院 皆有門診</p>
+          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row md:justify-start">
+            <BookingButton />
+            <Link href="#first-visit" className={buttonClass("ghost")}>
+              了解第一次門診
+            </Link>
+          </div>
         </div>
       </div>
     </section>

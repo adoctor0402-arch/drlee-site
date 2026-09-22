@@ -12,10 +12,17 @@
   --color-sage: #bbc9be;
   --color-ink: #2b3440;
   --color-muted: #66707c;
+  /* V1.1 品牌插畫色：夜空、圍巾暖黃、愛心粉 */
+  --color-night: #22385f;
+  --color-night-2: #2e4a7e;
+  --color-dusk: #6d7fae;
+  --color-sun: #efc75e;
+  --color-blush: #f3a5b5;
 
   --font-sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
   --font-serif: "Noto Serif TC", "Songti TC", serif;
   --font-display: "Cormorant Garamond", "Noto Serif TC", serif;
+  --font-hand: "LXGW WenKai TC", "Kaiti TC", "DFKai-SB", serif;
 
   --animate-twinkle: twinkle 6s ease-in-out infinite;
   --animate-float: float 10s ease-in-out infinite;

@@ -4,11 +4,12 @@ import { Logo } from "./logo";
 
 export function Footer() {
   return (
-    <footer className="bg-deep-2 text-ivory/75">
+    <footer className="bg-night text-ivory/75">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 md:grid-cols-[1.3fr_1fr_1.2fr] lg:px-10">
         <div>
           <Logo light />
           <p className="mt-5 max-w-xs text-sm leading-[1.9]">讓生殖醫學變得溫柔、清楚、值得信任。</p>
+          <p className="mt-4 font-hand text-lg text-sun/90">用醫學，守護每一個期待</p>
         </div>
 
         <nav aria-label="頁尾導覽">
@@ -55,7 +56,7 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-6 text-xs text-ivory/50 sm:flex-row sm:justify-between sm:px-6 lg:px-10">
           <p>本網站內容為衛教資訊，不能取代醫師的個別診斷與建議。</p>
-          <p>© {new Date().getFullYear()} 小王子醫師 Dr. Lee</p>
+          <p className="tracking-[0.2em]">LEE WOMEN&rsquo;S HOSPITAL｜茂盛醫院小王子　© {new Date().getFullYear()}</p>
         </div>
       </div>
     </footer>

@@ -6,8 +6,19 @@ export const site = {
   nameEn: "Dr. Lee",
   doctor: "李俊逸 醫師",
   tagline: "讓生殖醫學變得溫柔、清楚、值得信任",
+  slogan: "More Families · A Brighter Tomorrow",
+  promise: "用醫學，守護每一個期待",
   // 換成真人照片：把照片放到 public/images/ 後改這個路徑（建議直式 4:5，至少 1200×1500）
   heroImage: "/images/dr-lee-placeholder.svg",
+  // 品牌插畫（Ben 提供的小王子醫師插畫）
+  art: {
+    hero: "/images/prince/hero.webp",
+    embryo: "/images/prince/embryo.webp",
+    ultrasound: "/images/prince/ultrasound.webp",
+    books: "/images/prince/books.webp",
+    plane: "/images/prince/plane.webp",
+    globe: "/images/prince/globe.webp",
+  },
   description:
     "小王子醫師 Dr. Lee（李俊逸醫師）｜茂盛醫院生殖醫學。以專業為引導，以溫柔為初心，陪你走過備孕、凍卵、試管與反覆流產路上的每一個問號。",
 };
