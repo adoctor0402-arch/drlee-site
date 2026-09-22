@@ -23,6 +23,9 @@ export const site = {
     plane: "/images/prince/plane.webp",
     globe: "/images/prince/globe.webp",
     journey: "/images/prince/journey.webp",
+    watering: "/images/prince/watering.webp",
+    microscope: "/images/prince/microscope.webp",
+    heart: "/images/prince/heart.webp",
   },
   description:
     "小王子醫師 Dr. Lee（李俊逸醫師）｜茂盛醫院生殖醫學。以專業為引導，以溫柔為初心，陪你走過備孕、凍卵、試管與反覆流產路上的每一個問號。",
@@ -67,6 +70,9 @@ export const branches: Branch[] = [
     bookingUrl: withUtm("https://www.ivftaiwan.tw/appointment/taipei/department/step2"),
   },
 ];
+
+// 李俊逸醫師在茂盛醫院官網的介紹與掛號頁（兩院區門診表都在這裡）
+export const doctorPage = withUtm("https://www.ivftaiwan.tw/drgroup/section/detail/2");
 
 export const hospitalLinks = {
   schedule: "https://www.ivftaiwan.tw/guide/schedule",

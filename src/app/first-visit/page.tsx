@@ -6,7 +6,7 @@ import { Crown } from "@/components/logo";
 import { Starfield, Sticker, Twinkle } from "@/components/prince";
 import { firstVisitSteps } from "@/config/content";
 import { bringItems, clinicHours, faqs, hospitalFlow } from "@/config/first-visit";
-import { branches, hospitalLinks } from "@/config/site";
+import { branches, doctorPage, hospitalLinks } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "第一次門診要準備什麼",
@@ -55,10 +55,17 @@ export default function FirstVisitPage() {
       {/* 帶什麼來 */}
       <section id="bring" className="bg-white py-20 sm:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-10">
-          <h2 className="font-serif text-3xl font-semibold text-deep sm:text-4xl">可以先準備的東西</h2>
-          <p className="mt-4 max-w-2xl text-[16px] leading-relaxed text-muted">
-            下面這些有就帶，沒有也沒關係 —— 缺的部分，我們會依你的情況安排。
-          </p>
+          <div className="flex items-end justify-between gap-8">
+            <div>
+              <h2 className="font-serif text-3xl font-semibold text-deep sm:text-4xl">可以先準備的東西</h2>
+              <p className="mt-4 max-w-2xl text-[16px] leading-relaxed text-muted">
+                下面這些有就帶，沒有也沒關係 —— 缺的部分，我們會依你的情況安排。
+              </p>
+            </div>
+            <div className="hidden w-40 shrink-0 sm:block lg:w-48">
+              <Sticker name="watering" card sizes="200px" />
+            </div>
+          </div>
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2">
             {bringItems.map((g, i) => (
@@ -152,8 +159,8 @@ export default function FirstVisitPage() {
               </ul>
               <p className="mt-4 text-sm text-muted">
                 門診時段以醫院公告為準：
-                <a href={hospitalLinks.schedule} target="_blank" rel="noopener" className="ml-1 text-deep underline-offset-4 hover:underline">
-                  查看門診時段 ↗
+                <a href={doctorPage} target="_blank" rel="noopener" className="ml-1 text-deep underline-offset-4 hover:underline">
+                  李俊逸醫師門診表 ↗
                 </a>
               </p>
             </div>

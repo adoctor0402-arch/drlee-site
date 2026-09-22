@@ -316,22 +316,27 @@ export function LabTeaser() {
           className="group relative overflow-hidden rounded-3xl bg-[linear-gradient(160deg,#22385F,#2E4A7E)] p-8 text-ivory sm:p-12"
         >
           <Starfield light className="absolute inset-0 opacity-70" />
-          <div className="relative">
-            <Eyebrow light>For the curious</Eyebrow>
-            <h2 className="mt-3 font-display text-4xl font-semibold tracking-wide sm:text-5xl">Dr. Lee Lab</h2>
-            <p className="mt-4 max-w-md text-[15.5px] leading-[1.9] text-ivory/70">
-              研究、AI 與生殖醫學、演講與論文。給想看得更深的你。
-            </p>
-            <ul className="mt-8 flex flex-wrap gap-2">
-              {labItems.map((l) => (
-                <li key={l} className="rounded-full border border-white/15 px-3 py-1 font-display text-sm tracking-wide text-ivory/80">
-                  {l}
-                </li>
-              ))}
-            </ul>
-            <span className="mt-10 inline-flex items-center gap-1.5 text-[15px] font-medium text-gold-soft">
-              走進 Lab <span className="transition-transform group-hover:translate-x-1" aria-hidden>→</span>
-            </span>
+          <div className="relative grid gap-8 sm:grid-cols-[1.25fr_0.75fr] sm:items-center">
+            <div>
+              <Eyebrow light>For the curious</Eyebrow>
+              <h2 className="mt-3 font-display text-4xl font-semibold tracking-wide sm:text-5xl">Dr. Lee Lab</h2>
+              <p className="mt-4 max-w-md text-[15.5px] leading-[1.9] text-ivory/70">
+                研究、AI 與生殖醫學、演講與論文。給想看得更深的你。
+              </p>
+              <ul className="mt-8 flex flex-wrap gap-2">
+                {labItems.map((l) => (
+                  <li key={l} className="rounded-full border border-white/15 px-3 py-1 font-display text-sm tracking-wide text-ivory/80">
+                    {l}
+                  </li>
+                ))}
+              </ul>
+              <span className="mt-10 inline-flex items-center gap-1.5 text-[15px] font-medium text-gold-soft">
+                走進 Lab <span className="transition-transform group-hover:translate-x-1" aria-hidden>→</span>
+              </span>
+            </div>
+            <div className="hidden sm:block">
+              <Sticker name="microscope" card sizes="280px" />
+            </div>
           </div>
         </Link>
 
@@ -366,7 +371,7 @@ export function ClosingCTA() {
     <section className="relative overflow-hidden bg-white py-16 sm:py-24">
       <div className="relative mx-auto grid max-w-6xl items-center gap-6 px-4 sm:px-6 md:grid-cols-[1fr_1.1fr] lg:gap-12">
         <div className="mx-auto w-full max-w-sm md:order-2">
-          <Sticker name="plane" card />
+          <Sticker name="heart" card />
         </div>
         <div className="text-center md:text-left">
           <Eyebrow>Next Step</Eyebrow>

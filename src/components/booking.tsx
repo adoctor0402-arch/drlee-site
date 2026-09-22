@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
-import { branches, hospitalLinks, type Branch } from "@/config/site";
+import { branches, doctorPage, hospitalLinks, type Branch } from "@/config/site";
 import { buttonClass, type ButtonVariant, type ButtonSize } from "./button-class";
 
 type BookingCtx = { open: () => void };
@@ -96,10 +96,27 @@ function BookingSheet({ isOpen, onClose, lastBranch, setLastBranch }: SheetProps
           你想在哪裡看診？
         </h2>
         <p className="mt-2 text-[15px] leading-relaxed text-muted">
-          李俊逸醫師在台中總院與板橋分院都有門診。選擇院區後，會開啟茂盛醫院官方掛號頁。
+          李俊逸醫師在台中總院與板橋分院都有門診。掛號會開啟茂盛醫院官方頁面。
         </p>
 
-        <div className="mt-6 grid gap-3">
+        <a
+          href={doctorPage}
+          target="_blank"
+          rel="noopener"
+          className="group mt-6 flex items-center justify-between rounded-2xl bg-deep px-5 py-4 text-ivory transition-colors hover:bg-deep-2"
+        >
+          <span>
+            <span className="block font-serif text-lg font-semibold">李俊逸醫師 門診表與掛號</span>
+            <span className="mt-0.5 block text-sm text-ivory/70">兩個院區的門診時段都在這一頁</span>
+          </span>
+          <span className="text-xl text-sun transition-transform group-hover:translate-x-1" aria-hidden>
+            →
+          </span>
+        </a>
+
+        <p className="mt-6 text-xs uppercase tracking-[0.2em] text-muted">或直接到院區掛號系統</p>
+
+        <div className="mt-3 grid gap-3">
           {branches.map((b) => (
             <a
               key={b.id}
@@ -142,7 +159,7 @@ function BookingSheet({ isOpen, onClose, lastBranch, setLastBranch }: SheetProps
           </p>
           <p>
             <a href={hospitalLinks.schedule} target="_blank" rel="noopener" className="text-deep underline-offset-4 hover:underline">
-              查看最新門診時段 ↗
+              全院門診時段表 ↗
             </a>
           </p>
         </div>

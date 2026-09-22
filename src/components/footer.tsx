@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { branches, hospitalLinks, nav } from "@/config/site";
+import { branches, doctorPage, nav } from "@/config/site";
 import { Logo } from "./logo";
 
 export function Footer() {
@@ -46,8 +46,8 @@ export function Footer() {
               </li>
             ))}
             <li>
-              <a href={hospitalLinks.schedule} target="_blank" rel="noopener" className="text-gold-soft hover:text-ivory">
-                查看最新門診時段 ↗
+              <a href={doctorPage} target="_blank" rel="noopener" className="text-gold-soft hover:text-ivory">
+                李俊逸醫師門診表與掛號 ↗
               </a>
             </li>
           </ul>

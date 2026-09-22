@@ -8,20 +8,26 @@ const sizes: Record<ArtKey, [number, number]> = {
   hero: [1254, 1254],
   embryo: [1024, 1536],
   ultrasound: [1024, 1536],
-  books: [1024, 1536],
+  books: [1145, 1374],
   plane: [1145, 1374],
   globe: [1024, 1536],
   journey: [1024, 1536],
+  watering: [1024, 1536],
+  microscope: [1024, 1536],
+  heart: [1024, 1536],
 };
 
 const alts: Record<ArtKey, string> = {
   hero: "小王子醫師坐在星球上，身旁有一隻小狐狸，望向遠方的星星",
   embryo: "小王子醫師抱著發光的胚胎：讓愛有機會發芽",
   ultrasound: "小王子醫師指著超音波螢幕：看見生命的可能",
-  books: "小王子醫師坐在 IVF、PGT、RPL 書堆上閱讀：持續學習，只為了更多幸福",
+  books: "小王子醫師和小狐狸坐在 IVF、PGT、RPL 書堆上閱讀：持續學習，只為了更多幸福",
   plane: "小王子醫師和小狐狸坐飛機：一起飛向更大的可能",
   globe: "小王子醫師閉著眼擁抱戴著皇冠的地球",
   journey: "夕陽下，小王子醫師和小狐狸坐在山丘上望著茂盛醫院",
+  watering: "小王子醫師替玻璃罩裡的胚胎與新芽澆水：用知識灌溉希望",
+  microscope: "小王子醫師在實驗室用顯微鏡觀察胚胎：看見生命的可能",
+  heart: "小王子醫師雙手比出愛心：用愛守護每一個期待",
 };
 
 export function Sticker({

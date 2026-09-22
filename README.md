@@ -15,7 +15,7 @@ npm run dev
 
 | 要改什麼 | 檔案 |
 | --- | --- |
-| 掛號連結、電話、院區、導覽列 | `src/config/site.ts` |
+| 掛號連結（含李俊逸醫師門診頁）、電話、院區、導覽列 | `src/config/site.ts` |
 | 首頁文字（六大問題、第一次門診、方法、筆記、Now） | `src/config/content.ts` |
 | 第一次門診頁（帶什麼、流程、FAQ） | `src/config/first-visit.ts` |
 | 醫師照片、頭銜 | `public/images/dr-lee.webp`、`site.ts` 的 `roles` |
