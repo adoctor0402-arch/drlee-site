@@ -1,26 +1,67 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ---------- Color System（Spec §9） ---------- */
+@theme {
+  --color-deep: #17365d;
+  --color-deep-2: #0f2744;
+  --color-mist: #dce8f2;
+  --color-ivory: #faf8f3;
+  --color-sand: #f1ece2;
+  --color-gold: #c6a15b;
+  --color-gold-soft: #e7d6b1;
+  --color-sage: #bbc9be;
+  --color-ink: #2b3440;
+  --color-muted: #66707c;
+
+  --font-sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --font-serif: "Noto Serif TC", "Songti TC", serif;
+  --font-display: "Cormorant Garamond", "Noto Serif TC", serif;
+
+  --animate-twinkle: twinkle 6s ease-in-out infinite;
+  --animate-float: float 10s ease-in-out infinite;
+  --animate-orbit: orbit 90s linear infinite;
+  --animate-fade-up: fade-up 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@keyframes twinkle {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes orbit {
+  to { transform: rotate(360deg); }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-gold-soft);
+  color: var(--color-deep);
+}
+
+/* Motion must be subtle and respect user preference（Spec §25） */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }
