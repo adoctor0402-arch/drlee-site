@@ -57,7 +57,7 @@ export default function AboutPage() {
             <p className="font-hand text-2xl text-deep">每一個生命，都是獨一無二的星星 <span className="text-blush">♥</span></p>
           </div>
           <div className="mx-auto w-full max-w-xs">
-            <Sticker name="embryo" />
+            <Sticker name="journey" card />
           </div>
         </div>
       </section>

@@ -1,16 +1,17 @@
 import Image from "next/image";
 import { site } from "@/config/site";
 
-// 品牌插畫貼圖：白底已去背（透明 webp），適合放在淺色背景上。
+// 品牌插畫。embryo 為去背透明圖；其他為有背景的場景圖，用 card 模式顯示成圓角卡片。
 type ArtKey = keyof typeof site.art;
 
 const sizes: Record<ArtKey, [number, number]> = {
   hero: [1254, 1254],
-  embryo: [414, 436],
-  ultrasound: [414, 374],
-  books: [380, 375],
-  plane: [488, 375],
-  globe: [402, 375],
+  embryo: [1024, 1536],
+  ultrasound: [1024, 1536],
+  books: [1024, 1536],
+  plane: [1145, 1374],
+  globe: [1024, 1536],
+  journey: [1024, 1536],
 };
 
 const alts: Record<ArtKey, string> = {
@@ -19,17 +20,22 @@ const alts: Record<ArtKey, string> = {
   ultrasound: "小王子醫師指著超音波螢幕：看見生命的可能",
   books: "小王子醫師坐在 IVF、PGT、RPL 書堆上閱讀：持續學習，只為了更多幸福",
   plane: "小王子醫師和小狐狸坐飛機：一起飛向更大的可能",
-  globe: "小王子醫師擁抱地球：讓更多家庭擁有幸福的地球",
+  globe: "小王子醫師閉著眼擁抱戴著皇冠的地球",
+  journey: "夕陽下，小王子醫師和小狐狸坐在山丘上望著茂盛醫院",
 };
 
 export function Sticker({
   name,
   className = "",
   eager = false,
+  card = false,
+  sizes: sizesAttr = "(min-width: 1024px) 400px, 80vw",
 }: {
   name: ArtKey;
   className?: string;
   eager?: boolean;
+  card?: boolean;
+  sizes?: string;
 }) {
   const [w, h] = sizes[name];
   return (
@@ -40,7 +46,8 @@ export function Sticker({
       height={h}
       loading={eager ? "eager" : "lazy"}
       fetchPriority={eager ? "high" : undefined}
-      className={`h-auto w-full select-none ${className}`}
+      sizes={sizesAttr}
+      className={`h-auto w-full select-none ${card ? "rounded-[28px] shadow-[0_24px_50px_-28px_rgba(23,54,93,0.45)]" : ""} ${className}`}
     />
   );
 }

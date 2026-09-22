@@ -58,7 +58,7 @@ export function Hero() {
         {/* Visual: 品牌主視覺插畫，邊緣柔化融入夜空 */}
         <div className="relative mx-auto w-full max-w-[520px] animate-fade-up [animation-delay:200ms] lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:max-w-none lg:self-center">
           <div className="overflow-hidden rounded-[40px] shadow-[0_40px_80px_-40px_rgba(10,20,40,0.7)] ring-1 ring-white/15">
-            <Sticker name="hero" eager />
+            <Sticker name="hero" eager sizes="(min-width: 1024px) 600px, 90vw" />
           </div>
           {/* 真人名牌：把插畫和真人連在一起 */}
           <Link
@@ -97,7 +97,7 @@ export function HelpSection() {
               你不需要先知道醫學名詞。從你現在最在意的那件事開始就好。
             </p>
           </div>
-          <div className="hidden w-52 shrink-0 sm:block lg:w-60">
+          <div className="-mt-6 hidden w-44 shrink-0 sm:block lg:w-52">
             <Sticker name="embryo" />
           </div>
         </div>
@@ -143,8 +143,8 @@ export function FirstVisit() {
             不需要準備好所有答案。
           </h2>
           <p className="mt-6 font-hand text-2xl text-deep/85">帶著你的故事來就好 <span className="text-blush">♥</span></p>
-          <div className="mt-6 w-56 sm:w-64">
-            <Sticker name="ultrasound" />
+          <div className="mt-6 w-52 sm:w-60">
+            <Sticker name="ultrasound" card />
           </div>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
             <Link href="/first-visit" className={buttonClass("ghost")}>
@@ -222,20 +222,18 @@ export function Notes() {
   return (
     <section className="py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
-        <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
-          <div className="flex items-end gap-4">
-            <div className="w-28 shrink-0 sm:w-40">
-              <Sticker name="books" />
-            </div>
-            <div className="pb-3">
-              <Eyebrow>Fertility Notes</Eyebrow>
-              <h2 className="mt-3 font-serif text-3xl font-semibold text-deep sm:text-4xl">小王子的備孕筆記</h2>
-              <p className="mt-2 font-hand text-lg text-muted">持續學習，只為了更多幸福</p>
-            </div>
+        <div className="flex items-end justify-between gap-6">
+          <div>
+            <Eyebrow>Fertility Notes</Eyebrow>
+            <h2 className="mt-3 font-serif text-3xl font-semibold text-deep sm:text-4xl">小王子的備孕筆記</h2>
+            <p className="mt-2 font-hand text-lg text-muted">持續學習，只為了更多幸福</p>
+            <Link href="/notes" className="mt-4 inline-flex items-center gap-1.5 text-[15px] font-medium text-deep hover:text-gold">
+              看全部筆記 <span aria-hidden>→</span>
+            </Link>
           </div>
-          <Link href="/notes" className="inline-flex items-center gap-1.5 text-[15px] font-medium text-deep hover:text-gold">
-            看全部筆記 <span aria-hidden>→</span>
-          </Link>
+          <div className="hidden w-36 shrink-0 sm:block lg:w-44">
+            <Sticker name="books" card />
+          </div>
         </div>
 
         <ul className="-mx-4 mt-8 flex gap-2 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:px-0">
@@ -367,8 +365,8 @@ export function ClosingCTA() {
   return (
     <section className="relative overflow-hidden bg-white py-16 sm:py-24">
       <div className="relative mx-auto grid max-w-6xl items-center gap-6 px-4 sm:px-6 md:grid-cols-[1fr_1.1fr] lg:gap-12">
-        <div className="mx-auto w-full max-w-md md:order-2">
-          <Sticker name="plane" />
+        <div className="mx-auto w-full max-w-sm md:order-2">
+          <Sticker name="plane" card />
         </div>
         <div className="text-center md:text-left">
           <Eyebrow>Next Step</Eyebrow>

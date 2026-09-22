@@ -7,8 +7,8 @@ import { Sticker } from "./prince";
 export function ComingSoon({ eyebrow, title, note }: { eyebrow: string; title: string; note?: string }) {
   return (
     <section className="mx-auto flex max-w-3xl flex-col items-center px-4 py-24 text-center sm:py-32">
-      <div className="w-56">
-        <Sticker name="globe" />
+      <div className="w-44">
+        <Sticker name="globe" card />
       </div>
       <p className="mt-6 font-display text-sm italic tracking-[0.2em] text-gold">{eyebrow}</p>
       <h1 className="mt-2 font-serif text-3xl font-semibold text-deep sm:text-4xl">{title}</h1>

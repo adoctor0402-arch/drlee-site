@@ -12,8 +12,8 @@ export const site = {
   // 真人照片
   photo: "/images/dr-lee.webp",
   avatar: "/images/dr-lee-avatar.webp",
-  // 關於我：身分與經歷（上線前請確認用詞與正式頭銜）
-  roles: ["茂盛醫院 生殖醫學醫師", "茂盛醫院 板橋分院 執行長", "醫學大學 教授"],
+  // 關於我：身分與經歷
+  roles: ["茂盛醫院 生殖醫學科主任醫師", "基因遺傳主任", "中山醫學大學婦產部副教授"],
   // 品牌插畫（Ben 提供的小王子醫師插畫）
   art: {
     hero: "/images/prince/hero.webp",
@@ -22,6 +22,7 @@ export const site = {
     books: "/images/prince/books.webp",
     plane: "/images/prince/plane.webp",
     globe: "/images/prince/globe.webp",
+    journey: "/images/prince/journey.webp",
   },
   description:
     "小王子醫師 Dr. Lee（李俊逸醫師）｜茂盛醫院生殖醫學。以專業為引導，以溫柔為初心，陪你走過備孕、凍卵、試管與反覆流產路上的每一個問號。",
