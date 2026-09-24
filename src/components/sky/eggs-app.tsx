@@ -430,11 +430,11 @@ export function EggsApp() {
         >
           開始試算
         </button>
-        <Link className={s.link} href="/sky/natural" style={{ display: "block", textAlign: "center" }}>
+        <Link className={s.link} href="/sky" style={{ display: "block", textAlign: "center" }}>
           另一個工具：你們的星空（自然懷孕機率）
         </Link>
-        <Link className={s.link} href="/sky" style={{ display: "block", textAlign: "center" }}>
-          回到星空入口
+        <Link className={s.link} href="/" style={{ display: "block", textAlign: "center" }}>
+          回小王子醫師網站
         </Link>
       </>
     );

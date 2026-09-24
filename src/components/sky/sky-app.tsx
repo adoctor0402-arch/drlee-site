@@ -495,11 +495,8 @@ export function SkyApp() {
         >
           開始試算
         </button>
-        <Link className={s.link} href="/sky/eggs" style={{ display: "block", textAlign: "center" }}>
-          另一個工具：我的卵子，夠不夠？（凍卵累積活產機率）
-        </Link>
-        <Link className={s.link} href="/sky" style={{ display: "block", textAlign: "center" }}>
-          回到星空入口
+        <Link className={s.link} href="/">
+          回小王子醫師網站
         </Link>
       </>
     );

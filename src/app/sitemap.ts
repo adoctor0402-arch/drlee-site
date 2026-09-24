@@ -15,8 +15,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/lab",
     "/now",
     "/sky",
-    "/sky/natural",
-    "/sky/eggs",
   ].map((p) => ({
     url: `${siteUrl}${p}`,
     lastModified: now,
