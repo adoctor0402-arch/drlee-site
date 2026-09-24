@@ -6,7 +6,18 @@ import { siteUrl } from "@/config/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const pages = ["", "/about", "/first-visit", "/notes", "/observatory", "/lab", "/now"].map((p) => ({
+  const pages = [
+    "",
+    "/about",
+    "/first-visit",
+    "/notes",
+    "/observatory",
+    "/lab",
+    "/now",
+    "/sky",
+    "/sky/natural",
+    "/sky/eggs",
+  ].map((p) => ({
     url: `${siteUrl}${p}`,
     lastModified: now,
     changeFrequency: "monthly" as const,

@@ -6,6 +6,7 @@ import { Sticker, Twinkle } from "@/components/prince";
 import { getCategories, getNotes } from "@/lib/notes";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/notes" },
   title: "小王子的備孕筆記",
   description:
     "小王子醫師（李俊逸醫師）的備孕筆記：不孕症、高齡備孕、凍卵、試管嬰兒、胚胎、PGT、反覆流產與最新研究，用看得懂的方式說清楚。",

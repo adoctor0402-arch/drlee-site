@@ -11,7 +11,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps<"/[topic]">) {
   const { topic } = await params;
-  return { title: topics.find((t) => t.slug === topic)?.label };
+  return { title: topics.find((t) => t.slug === topic)?.label, alternates: { canonical: `/${topic}` } };
 }
 
 export default async function Page({ params }: PageProps<"/[topic]">) {

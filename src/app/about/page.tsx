@@ -9,6 +9,7 @@ import { approach } from "@/config/content";
 import { site } from "@/config/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/about" },
   title: "關於我",
   description: "認識小王子醫師 Dr. Lee（李俊逸醫師）：茂盛醫院生殖醫學，台中總院與板橋分院皆有門診。",
 };

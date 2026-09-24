@@ -143,3 +143,36 @@
   .app, .app *{animation:none!important;transition:none!important}
   svg:global(.sky) :global(.lit){opacity:1} svg:global(.sky) :global(.halo){opacity:.5} svg:global(.sky) :global(.meteor){display:none}
 }
+
+/* ===== 「我的卵子，夠不夠？」專用 ===== */
+.app .cmp2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0 6px}
+.app .cmp2 .box{border:1px solid var(--line);border-radius:16px;padding:14px;text-align:center;background:var(--panel)}
+.app .cmp2 .box b{display:block;font-family:var(--serif);font-size:34px;line-height:1.2;font-weight:700}
+.app .cmp2 .box.model b{color:var(--star)}
+.app .cmp2 .box span{font-size:13px;color:var(--muted);display:block}
+.app .legend{font-size:12.5px;color:var(--muted);line-height:1.6;margin:6px 0 18px}
+.app .legend i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--star);margin-right:6px;vertical-align:middle}
+.app .range{font-family:var(--serif);font-size:21px;line-height:1.6;margin:14px 0 4px}
+.app .range strong{color:var(--star);font-size:28px}
+.app .tgt{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-bottom:10px;font-size:15px}
+.app .tgt b{font-weight:700;text-align:right}
+.app .tgt.off{opacity:.55}
+.app .tgt.done b{color:var(--star)}
+.app .flag{border:1px solid var(--rose);border-radius:14px;padding:12px 16px;font-size:14px;line-height:1.65;margin:14px 0}
+.app svg:global(.sky) :global(.neb){fill:url(#ng);transition:opacity 1s ease}
+.app svg:global(.sky) :global(.ns0){stop-color:var(--star);stop-opacity:.55}
+.app svg:global(.sky) :global(.ns1){stop-color:var(--star);stop-opacity:0}
+
+/* ===== 星空入口頁 ===== */
+.app .hubcard{display:block;text-decoration:none;color:inherit;border:1px solid var(--line);background:var(--panel);
+  border-radius:22px;padding:20px 20px 22px;margin-bottom:16px;position:relative;overflow:hidden;transition:transform .15s ease,border-color .15s ease}
+.app .hubcard:active{transform:scale(.99)}
+.app .hubcard:hover{border-color:var(--star)}
+.app .hubcard .tag{font-size:12px;color:var(--muted);letter-spacing:.05em}
+.app .hubcard h3{font-family:var(--serif);font-size:24px;font-weight:700;margin:6px 0 8px;line-height:1.35}
+.app .hubcard p{font-size:14.5px;color:var(--muted);margin:0 0 14px;line-height:1.7}
+.app .hubcard .who{font-size:13px;border-top:1px solid var(--line);padding-top:12px;display:flex;justify-content:space-between;gap:10px;align-items:center;color:var(--ink);margin-bottom:0}
+.app .hubcard .who b{font-weight:500}
+.app .hubcard .arrow{color:var(--star);font-weight:700;white-space:nowrap}
+.app .hubcard .mini{margin:-6px -6px 10px}
+.app .foot{font-size:12.5px;color:var(--muted);line-height:1.7;border-top:1px solid var(--line);padding-top:16px;margin-top:8px}

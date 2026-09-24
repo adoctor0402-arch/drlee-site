@@ -5,6 +5,7 @@ import { Sticker, Starfield, Twinkle } from "@/components/prince";
 import { countPending, formatDate, getPapers, getTopics } from "@/lib/observatory";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/observatory" },
   title: "星際觀測站",
   description:
     "星際觀測站：小王子醫師（李俊逸醫師）追蹤生殖醫學的最新研究，用白話說清楚每篇論文在問什麼、發現了什麼、對你可能代表什麼。",

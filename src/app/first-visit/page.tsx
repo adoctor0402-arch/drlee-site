@@ -9,6 +9,7 @@ import { bringItems, clinicHours, faqs, hospitalFlow } from "@/config/first-visi
 import { branches, doctorPage, hospitalLinks } from "@/config/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/first-visit" },
   title: "第一次門診要準備什麼",
   description:
     "第一次看小王子醫師（李俊逸醫師）的門診要帶什麼、流程怎麼走、常見問題整理。茂盛醫院台中總院與板橋分院皆有門診。",

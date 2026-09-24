@@ -19,6 +19,7 @@ export async function generateMetadata({ params }: PageProps<"/notes/[slug]">): 
   const note = getNote(slug);
   if (!note) return {};
   return {
+    alternates: { canonical: `/notes/${note.slug}` },
     title: note.title,
     description: note.summary,
     openGraph: { title: note.title, description: note.summary, type: "article" },

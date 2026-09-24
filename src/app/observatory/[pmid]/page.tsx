@@ -18,6 +18,7 @@ export async function generateMetadata({ params }: PageProps<"/observatory/[pmid
   const paper = getPaper(pmid);
   if (!paper) return {};
   return {
+    alternates: { canonical: `/observatory/${paper.pmid}` },
     title: paper.title,
     description: paper.takeaways[0] ?? paper.titleEn,
   };
