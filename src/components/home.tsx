@@ -299,6 +299,22 @@ export function LabTeaser() {
           </div>
         </Link>
 
+        <div className="grid gap-5">
+        <Link
+          href="/observatory"
+          className="group rounded-3xl border border-deep/10 bg-white p-8 transition-colors hover:border-gold/60 sm:p-10"
+        >
+          <Eyebrow>Research Observatory</Eyebrow>
+          <h2 className="mt-3 font-serif text-2xl font-semibold text-deep">星際觀測站</h2>
+          <p className="mt-3 text-[15px] leading-[1.9] text-muted">
+            國際期刊的最新研究，我讀過之後用白話寫下重點：這篇在問什麼、發現了什麼、對你可能代表什麼。
+          </p>
+          <span className="mt-6 inline-flex items-center gap-1.5 text-[15px] font-medium text-deep">
+            看最新研究
+            <span className="text-gold transition-transform group-hover:translate-x-1" aria-hidden>→</span>
+          </span>
+        </Link>
+
         <Link href="/now" className="group rounded-3xl border border-deep/10 bg-white p-8 sm:p-10">
           <p className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.25em] text-muted">
             <span className="relative flex h-2 w-2">
@@ -319,6 +335,7 @@ export function LabTeaser() {
             </div>
           </dl>
         </Link>
+        </div>
       </div>
     </section>
   );

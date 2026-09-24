@@ -1,0 +1,33 @@
+name: 星際觀測站 — 抓取新論文
+
+on:
+  schedule:
+    # 每週一台灣時間早上 8:00（UTC 00:00）
+    - cron: "0 0 * * 1"
+  workflow_dispatch: {} # 也可以在 GitHub 上手動按一下就跑
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: 抓取 PubMed 新論文
+        env:
+          # 選填：設了這個 secret，就會順便產生中文草稿（仍然是待審核狀態）
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/fetch-papers.mjs
+
+      - name: 把待審核的論文存回 repo
+        run: |
+          git config user.name "observatory-bot"
+          git config user.email "noreply@github.com"
+          git add content/observatory
+          git diff --staged --quiet && echo "沒有新論文" && exit 0
+          git commit -m "星際觀測站：新增待審核論文 $(date +%Y-%m-%d)"
+          git push

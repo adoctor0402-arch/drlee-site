@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "fetch:papers": "node scripts/fetch-papers.mjs",
+    "test:parse": "node scripts/test-parse.mjs"
   },
   "dependencies": {
     "@fontsource/cormorant-garamond": "^5.3.0",

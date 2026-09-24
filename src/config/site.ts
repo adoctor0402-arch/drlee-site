@@ -35,8 +35,8 @@ export const nav = [
   { label: "關於我", href: "/about" },
   { label: "我可以幫你", href: "/#help" },
   { label: "備孕筆記", href: "/notes" },
+  { label: "星際觀測站", href: "/observatory" },
   { label: "Dr. Lee Lab", href: "/lab" },
-  { label: "最新消息", href: "/now" },
 ];
 
 // 追蹤網站帶來的掛號量（若醫院系統不接受 query string，把 utm 設為空字串即可）

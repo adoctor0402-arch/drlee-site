@@ -1,0 +1,55 @@
+{
+  "//": "星際觀測站：要追蹤的主題。query 用 PubMed 語法，想調整搜尋條件改這裡就好。",
+  "days": 30,
+  "perTopic": 4,
+  "minJournalImpactNote": "PubMed 沒有 impact factor，篩選靠 journals 白名單與人工審核",
+  "topics": [
+    {
+      "key": "ivf",
+      "label": "試管嬰兒",
+      "query": "(in vitro fertilization[Title]) AND (live birth[Title/Abstract] OR ovarian stimulation[Title/Abstract] OR clinical trial[Publication Type])"
+    },
+    {
+      "key": "pgt",
+      "label": "PGT・胚胎",
+      "query": "(preimplantation genetic testing[Title] OR embryo selection[Title] OR blastocyst[Title]) AND (aneuploidy[Title/Abstract] OR mosaicism[Title/Abstract] OR morphokinetics[Title/Abstract])"
+    },
+    {
+      "key": "rpl",
+      "label": "反覆流產",
+      "query": "(recurrent pregnancy loss[Title] OR recurrent miscarriage[Title] OR recurrent implantation failure[Title])"
+    },
+    {
+      "key": "fertility-preservation",
+      "label": "凍卵・生育保存",
+      "query": "(oocyte cryopreservation[Title] OR fertility preservation[Title] OR ovarian reserve[Title]) AND (outcome[Title/Abstract] OR counseling[Title/Abstract] OR live birth[Title/Abstract])"
+    },
+    {
+      "key": "ai",
+      "label": "AI × 生殖醫學",
+      "query": "(artificial intelligence[Title/Abstract] OR machine learning[Title/Abstract] OR deep learning[Title/Abstract]) AND (embryo[Title] OR IVF[Title] OR fertility[Title])"
+    },
+    {
+      "key": "male",
+      "label": "男性生育力",
+      "query": "(sperm DNA fragmentation[Title] OR male infertility[Title]) AND (treatment[Title/Abstract] OR outcome[Title/Abstract])"
+    }
+  ],
+  "//journals": "只收這些期刊的文章。留空陣列代表不限期刊。",
+  "journals": [
+    "Hum Reprod",
+    "Hum Reprod Update",
+    "Hum Reprod Open",
+    "Fertil Steril",
+    "Fertil Steril Rep",
+    "Reprod Biomed Online",
+    "J Assist Reprod Genet",
+    "N Engl J Med",
+    "Lancet",
+    "JAMA",
+    "BMJ",
+    "Nat Med",
+    "Hum Fertil (Camb)",
+    "Reprod Biol Endocrinol"
+  ]
+}

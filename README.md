@@ -19,6 +19,8 @@ npm run dev
 | 首頁文字（六大問題、第一次門診、方法、筆記、Now） | `src/config/content.ts` |
 | 第一次門診頁（帶什麼、流程、FAQ） | `src/config/first-visit.ts` |
 | 備孕筆記文章 | `content/notes/*.md`（複製 `_範本.md` 開新文章） |
+| 星際觀測站論文 | `content/observatory/*.md`（由抓取腳本產生） |
+| 觀測站追蹤的主題與期刊 | `scripts/observatory.config.json` |
 | 醫師照片、頭銜 | `public/images/dr-lee.webp`、`site.ts` 的 `roles` |
 | 顏色 / 字型 / 動畫 | `src/app/globals.css` |
 | 小王子角色插畫 | `src/components/prince.tsx` |
@@ -30,6 +32,7 @@ npm run dev
 - ✅ 關於我（真人照片、身分、理念）
 - ✅ 第一次門診（帶什麼、流程、常見問題）
 - ✅ 備孕筆記：列表、分類篩選、文章模板（Markdown 寫作）
+- ✅ 星際觀測站：PubMed 自動抓取 → 醫師審核 → 上線
 - ⏳ Dr. Lee Lab、/now：目前是「整理中」頁面
 - ✅ 真人照片：public/images/dr-lee.webp（大頭照 dr-lee-avatar.webp）
 
@@ -41,6 +44,30 @@ npm run dev
 4. 寫完把 `draft: true` 改成 `draft: false`（或整行刪掉），文章就會出現在網站上。
 
 分類請從這九個選：準備懷孕、高齡備孕、凍卵、試管嬰兒、胚胎、PGT、反覆流產、男性生育力、最新研究。
+
+## 星際觀測站（新論文自動更新）
+
+流程是「自動抓取 → 你審核 → 上線」，沒審核的論文不會出現在網站上。
+
+```bash
+npm run fetch:papers          # 抓最近 30 天的新論文，存成待審核檔案
+npm run fetch:papers -- --dry # 只看會抓到什麼，不寫檔
+npm run test:parse            # 不用連網，測試解析邏輯有沒有壞掉
+```
+
+- 抓回來的檔案在 `content/observatory/<PMID>.md`，一律是 `draft: true`。
+- 審核方式：打開檔案，改中文標題、補「三十秒看懂」三句、寫「小王子醫師的解讀」，
+  刪掉最下面的原文摘要註解，再把 `draft` 改成 `false`。
+- 要追蹤哪些主題、只收哪些期刊，改 `scripts/observatory.config.json`。
+- 本機 `npm run dev` 時，觀測站頁面上方會顯示「有幾篇待審核」，正式站不會出現。
+
+### 讓它每週自動跑
+
+`.github/workflows/observatory.yml` 已經設定好：推上 GitHub 後，每週一台灣時間早上 8 點
+自動抓取並把待審核檔案 commit 回 repo（也可以在 GitHub 頁面手動按 Run）。
+
+選用：在 GitHub 的 Settings → Secrets 加上 `ANTHROPIC_API_KEY`，抓取時會順便產生
+中文標題與白話重點的**草稿**，你只要修改、確認即可 —— 草稿一樣是待審核狀態。
 
 ## 部署
 
