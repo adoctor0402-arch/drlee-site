@@ -1,6 +1,10 @@
 // 網站全域設定：導覽、品牌文字、預約連結。
 // 醫院掛號系統改版時，只需要改這個檔案。
 
+// 正式網址。部署後在 Vercel 設定環境變數 NEXT_PUBLIC_SITE_URL（例如 https://drlee.tw），
+// sitemap、robots 與分享預覽圖都會跟著換。
+export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://drlee-site.vercel.app").replace(/\/$/, "");
+
 export const site = {
   name: "小王子醫師",
   nameEn: "Dr. Lee",

@@ -83,4 +83,4 @@ Claude 會讀 Slack、產生待審檔案，你再補上解讀。
 
 ## 部署
 
-推到 GitHub 後，在 Vercel 匯入專案即可（Framework：Next.js，不需額外設定）。
+看 `DEPLOY.md`，裡面有逐步指令（Vercel CLI 最快 5 分鐘上線；接 GitHub 之後 push 就自動更新）。

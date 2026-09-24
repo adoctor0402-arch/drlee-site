@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 預覽截圖（不進版控）
+preview-*.png
+preview-*.jpg
