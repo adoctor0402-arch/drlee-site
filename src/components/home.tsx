@@ -1,10 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { approach, firstVisitSteps, labItems, noteCategories, now, sampleNotes, topics } from "@/config/content";
+import { approach, firstVisitSteps, labItems, now, topics } from "@/config/content";
+import { getCategories, getNotes } from "@/lib/notes";
 import { site } from "@/config/site";
 import { BookingButton } from "./booking";
 import { buttonClass } from "./button-class";
 import { TopicIcon } from "./icons";
+import { NoteCard } from "./note-card";
 import { Crown } from "./logo";
 import { Starfield, Sticker, Twinkle } from "./prince";
 
@@ -219,6 +221,10 @@ export function Approach() {
 
 /* ---------------------------------------------------------------- Notes §16 */
 export function Notes() {
+  const notes = getNotes().slice(0, 3);
+  const categories = getCategories();
+  if (notes.length === 0) return null;
+
   return (
     <section className="py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
@@ -232,77 +238,30 @@ export function Notes() {
             </Link>
           </div>
           <div className="hidden w-36 shrink-0 sm:block lg:w-44">
-            <Sticker name="books" card />
+            <Sticker name="books" card sizes="200px" />
           </div>
         </div>
 
         <ul className="-mx-4 mt-8 flex gap-2 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:px-0">
-          {noteCategories.map((c) => (
-            <li key={c}>
+          {categories.map((c) => (
+            <li key={c.name}>
               <Link
-                href={`/notes?category=${encodeURIComponent(c)}`}
+                href={`/notes?category=${encodeURIComponent(c.name)}`}
                 className="block whitespace-nowrap rounded-full border border-deep/10 bg-white px-4 py-2 text-sm text-ink/80 transition-colors hover:border-gold hover:text-deep"
               >
-                {c}
+                {c.name}
               </Link>
             </li>
           ))}
         </ul>
 
         <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {sampleNotes.map((n, i) => (
-            <Link
-              key={n.slug}
-              href={`/notes/${n.slug}`}
-              className="group flex flex-col overflow-hidden rounded-3xl border border-deep/[0.07] bg-white transition-shadow duration-500 hover:shadow-[0_24px_50px_-30px_rgba(23,54,93,0.35)]"
-            >
-              <div className={`relative h-40 overflow-hidden ${["bg-mist", "bg-sand", "bg-sage/40"][i % 3]}`}>
-                <NoteArt variant={i} />
-              </div>
-              <div className="flex flex-1 flex-col p-7">
-                <p className="text-xs font-medium tracking-widest text-gold">{n.category}</p>
-                <h3 className="mt-2 font-serif text-xl font-semibold leading-snug text-deep group-hover:underline group-hover:decoration-gold/60 group-hover:underline-offset-4">
-                  {n.title}
-                </h3>
-                <p className="mt-3 text-[15px] leading-[1.85] text-muted">{n.summary}</p>
-                <p className="mt-auto pt-6 text-xs text-muted/80">更新於 {n.date}</p>
-              </div>
-            </Link>
+          {notes.map((n, i) => (
+            <NoteCard key={n.slug} note={n} index={i} />
           ))}
         </div>
       </div>
     </section>
-  );
-}
-
-function NoteArt({ variant }: { variant: number }) {
-  // 品牌 metaphor 插畫：星軌 / 星座 / 新芽
-  if (variant === 0)
-    return (
-      <svg viewBox="0 0 300 160" className="absolute inset-0 h-full w-full" aria-hidden>
-        <ellipse cx="150" cy="80" rx="110" ry="34" fill="none" stroke="#17365D" strokeOpacity=".18" />
-        <ellipse cx="150" cy="80" rx="70" ry="20" fill="none" stroke="#C6A15B" strokeOpacity=".6" strokeDasharray="2 5" />
-        <circle cx="150" cy="80" r="16" fill="#17365D" fillOpacity=".85" />
-        <circle cx="222" cy="68" r="5" fill="#C6A15B" />
-      </svg>
-    );
-  if (variant === 1)
-    return (
-      <svg viewBox="0 0 300 160" className="absolute inset-0 h-full w-full" aria-hidden>
-        <path d="M60 110 L110 60 L160 90 L205 45 L245 75" fill="none" stroke="#17365D" strokeOpacity=".3" />
-        {[[60, 110], [110, 60], [160, 90], [205, 45], [245, 75]].map(([x, y], i) => (
-          <circle key={i} cx={x} cy={y} r={i === 3 ? 6 : 4} fill={i === 3 ? "#C6A15B" : "#17365D"} />
-        ))}
-      </svg>
-    );
-  return (
-    <svg viewBox="0 0 300 160" className="absolute inset-0 h-full w-full" aria-hidden>
-      <path d="M40 140 Q150 110 260 140" fill="none" stroke="#17365D" strokeOpacity=".25" />
-      <path d="M150 128 C 150 110, 150 96, 152 82" stroke="#5E7B66" strokeWidth="2" fill="none" />
-      <path d="M152 92 C 136 90, 128 78, 130 66 C 144 68, 153 78, 152 92z" fill="#8FA897" />
-      <path d="M152 86 C 164 76, 178 76, 184 82 C 176 94, 162 94, 152 86z" fill="#BBC9BE" />
-      <circle cx="200" cy="40" r="4" fill="#C6A15B" />
-    </svg>
   );
 }
 

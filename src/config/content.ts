@@ -55,36 +55,6 @@ export const approach: { n: string; title: string; body: string; quote?: string;
   },
 ];
 
-// Knowledge（§16）
-export const noteCategories = [
-  "準備懷孕", "高齡備孕", "凍卵", "試管嬰兒", "胚胎", "PGT", "反覆流產", "男性生育力", "最新研究",
-];
-
-// 範例文章（上線前替換為真實文章）
-export const sampleNotes = [
-  {
-    slug: "age-41-how-many-eggs",
-    category: "凍卵",
-    title: "41 歲，要凍幾顆卵才夠？",
-    summary: "「夠」不是一個固定數字。年齡、卵巢功能與你對未來的規劃，都會改變答案。",
-    date: "2026-09",
-  },
-  {
-    slug: "does-everyone-need-pgt-a",
-    category: "PGT",
-    title: "PGT-A 是不是每個人都需要？",
-    summary: "胚胎染色體篩檢能回答一些問題，但不是所有問題。先弄清楚它能幫你什麼。",
-    date: "2026-09",
-  },
-  {
-    slug: "recurrent-miscarriage-where-to-start",
-    category: "反覆流產",
-    title: "反覆流產，該從哪裡開始找原因？",
-    summary: "從胚胎、子宮、免疫到凝血，整理一條不慌亂的評估路徑。",
-    date: "2026-09",
-  },
-];
-
 // Dr. Lee Lab / Now（§18–§19）
 export const labItems = ["Research", "AI × Reproductive Medicine", "Lectures", "Publications", "Projects", "Clinical Research Notes"];
 

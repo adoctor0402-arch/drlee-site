@@ -72,3 +72,67 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* ---------- 文章內文（備孕筆記） ---------- */
+.prose-note {
+  color: color-mix(in srgb, var(--color-ink) 82%, transparent);
+  font-size: 16.5px;
+  line-height: 2;
+}
+.prose-note > * + * { margin-top: 1.25em; }
+.prose-note h2 {
+  margin-top: 2.4em;
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-deep);
+}
+.prose-note h2::before {
+  content: "";
+  display: block;
+  width: 2.2rem;
+  height: 2px;
+  margin-bottom: 0.75rem;
+  background: var(--color-gold);
+}
+.prose-note h3 {
+  margin-top: 1.9em;
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-deep);
+}
+.prose-note strong { color: var(--color-deep); font-weight: 600; }
+.prose-note a { color: var(--color-deep); text-decoration: underline; text-underline-offset: 4px; }
+.prose-note ul, .prose-note ol { padding-left: 1.3em; }
+.prose-note ul { list-style: none; padding-left: 0; }
+.prose-note ul > li { position: relative; padding-left: 1.4em; }
+.prose-note ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0.25em;
+  top: 0.95em;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-gold);
+}
+.prose-note ol { list-style: decimal; }
+.prose-note li + li { margin-top: 0.5em; }
+.prose-note blockquote {
+  border-left: 2px solid var(--color-gold);
+  padding: 0.2em 0 0.2em 1.2em;
+  color: var(--color-deep);
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  line-height: 1.9;
+}
+.prose-note table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.prose-note th, .prose-note td {
+  border-bottom: 1px solid color-mix(in srgb, var(--color-deep) 10%, transparent);
+  padding: 0.7em 0.6em;
+  text-align: left;
+}
+.prose-note th { color: var(--color-deep); font-weight: 600; }
+.prose-note hr { border: 0; border-top: 1px solid color-mix(in srgb, var(--color-deep) 10%, transparent); margin: 2.5em 0; }
