@@ -20,6 +20,7 @@ npm run dev
 | 第一次門診頁（帶什麼、流程、FAQ） | `src/config/first-visit.ts` |
 | 備孕筆記文章 | `content/notes/*.md`（複製 `_範本.md` 開新文章） |
 | 星際觀測站論文 | `content/observatory/*.md`（由抓取腳本產生） |
+| 你們的星空試算 | `src/components/sky/`（model.ts 是機率公式） |
 | 觀測站追蹤的主題與期刊 | `scripts/observatory.config.json` |
 | 醫師照片、頭銜 | `public/images/dr-lee.webp`、`site.ts` 的 `roles` |
 | 顏色 / 字型 / 動畫 | `src/app/globals.css` |
@@ -33,6 +34,7 @@ npm run dev
 - ✅ 第一次門診（帶什麼、流程、常見問題）
 - ✅ 備孕筆記：列表、分類篩選、文章模板（Markdown 寫作）
 - ✅ 星際觀測站：PubMed 自動抓取 → 醫師審核 → 上線
+- ✅ 你們的星空 /sky：自然懷孕機率試算（Cameron 2026 模型）
 - ⏳ Dr. Lee Lab、/now：目前是「整理中」頁面
 - ✅ 真人照片：public/images/dr-lee.webp（大頭照 dr-lee-avatar.webp）
 

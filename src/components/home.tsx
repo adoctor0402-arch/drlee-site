@@ -132,6 +132,33 @@ export function HelpSection() {
   );
 }
 
+/* ---------------------------------------------------------------- 互動工具：你們的星空 */
+export function SkyBand() {
+  return (
+    <section className="bg-[linear-gradient(140deg,#22385F_0%,#2E4A7E_60%,#5F73A3_100%)] py-14 text-ivory sm:py-16">
+      <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-8 px-4 text-center sm:px-6 md:flex-row md:text-left lg:px-10">
+        <Starfield light className="absolute inset-0" />
+        <div className="relative w-40 shrink-0 sm:w-48">
+          <Sticker name="hero" card sizes="200px" />
+        </div>
+        <div className="relative flex-1">
+          <Eyebrow light>Interactive</Eyebrow>
+          <h2 className="mt-3 font-serif text-2xl font-semibold leading-snug sm:text-3xl">
+            在試管之前，先看看你們的星空
+          </h2>
+          <p className="mt-3 max-w-xl text-[15.5px] leading-[1.9] text-ivory/75">
+            被診斷不孕，不代表只能靠治療。回答 7 個問題，約 30 秒，估算你們在不治療的情況下、
+            一年內自然懷孕並生下寶寶的機率。資料只在你的裝置上計算，不會上傳。
+          </p>
+          <Link href="/sky" className={`${buttonClass("sun")} mt-6`}>
+            開始試算
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------------------------------------------------------------- First Visit §14 */
 export function FirstVisit() {
   return (

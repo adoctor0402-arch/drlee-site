@@ -1,4 +1,4 @@
-import { Approach, ClosingCTA, FirstVisit, HelpSection, Hero, LabTeaser, MeetDrLee, Notes } from "@/components/home";
+import { Approach, ClosingCTA, FirstVisit, HelpSection, Hero, LabTeaser, MeetDrLee, Notes, SkyBand } from "@/components/home";
 
 export default function Home() {
   return (
@@ -6,6 +6,7 @@ export default function Home() {
       <Hero />
       <HelpSection />
       <MeetDrLee />
+      <SkyBand />
       <FirstVisit />
       <Approach />
       <Notes />

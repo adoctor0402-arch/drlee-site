@@ -1,0 +1,145 @@
+/* 「你們的星空」自然懷孕機率試算 —— 由單檔 HTML 原型移植，樣式在此模組內作用域化 */
+.app{
+  position:relative;
+  font-family:var(--sans);
+  color:var(--ink);
+  line-height:1.7;
+  min-height:calc(100dvh - 64px);
+  background:var(--sky);
+  background-image:radial-gradient(120% 70% at 80% -10%, var(--sky2) 0%, transparent 60%),
+                   radial-gradient(90% 60% at 0% 110%, var(--sky2) 0%, transparent 55%);
+}
+.app{
+  --sky:#17234C; --sky2:#34498A; --panel:rgba(255,255,255,.05);
+  --ink:#ECEAF8; --muted:#A3A5CC; --line:rgba(236,234,248,.16);
+  --star:#F4C96B; --starglow:rgba(244,201,107,.55); --dim:rgba(200,205,240,.22);
+  --rose:#E8A5B5; --btn:#F4C96B; --btnink:#1A1F45;
+  --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){
+.app:not([data-theme="dark"]){
+    --sky:#F3EEF8; --sky2:#E3D9F0; --panel:rgba(30,33,80,.04);
+    --ink:#1E2150; --muted:#5B5E8E; --line:rgba(30,33,80,.14);
+    --star:#C98714; --starglow:rgba(201,135,20,.35); --dim:rgba(30,33,80,.16);
+    --rose:#B0506F; --btn:#1E2150; --btnink:#F7F3FC; color-scheme:light;
+  }
+}
+.app[data-theme="light"]{
+  --sky:#F3EEF8; --sky2:#E3D9F0; --panel:rgba(30,33,80,.04);
+  --ink:#1E2150; --muted:#5B5E8E; --line:rgba(30,33,80,.14);
+  --star:#C98714; --starglow:rgba(201,135,20,.35); --dim:rgba(30,33,80,.16);
+  --rose:#B0506F; --btn:#1E2150; --btnink:#F7F3FC; color-scheme:light;
+}
+.app *, .app *::before, .app *::after{box-sizing:inherit}
+.app{
+  margin:0;min-height:100%;font-family:var(--sans);color:var(--ink);line-height:1.7;
+  background:var(--sky);
+  background-image:radial-gradient(120% 70% at 80% -10%, var(--sky2) 0%, transparent 60%),
+                   radial-gradient(90% 60% at 0% 110%, var(--sky2) 0%, transparent 55%);
+  background-attachment:fixed;-webkit-font-smoothing:antialiased;
+}
+.app .wrap{max-width:460px;margin:0 auto;padding:28px 22px 40px;min-height:calc(100dvh - 120px);display:flex;flex-direction:column}
+.app .brand{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);margin-bottom:28px}
+.app .brand b{font-family:var(--serif);font-weight:500;color:var(--ink);font-size:14px;letter-spacing:.04em}
+.app .theme{background:none;border:1px solid var(--line);color:var(--muted);border-radius:99px;padding:4px 10px;font:inherit;font-size:12px;cursor:pointer}
+.app h1{font-family:var(--serif);font-weight:700;font-size:clamp(34px,9vw,44px);line-height:1.25;margin:8px 0 18px;letter-spacing:.02em}
+.app h2{font-family:var(--serif);font-weight:700;font-size:26px;line-height:1.4;margin:0 0 10px}
+.app p{margin:0 0 14px}
+.app .muted{color:var(--muted)}
+.app .small{font-size:13px;line-height:1.65}
+.app .btn{display:block;width:100%;border:0;border-radius:16px;padding:16px 20px;font:inherit;font-size:17px;font-weight:700;
+  background:var(--btn);color:var(--btnink);cursor:pointer;transition:transform .12s ease}
+.app .btn:active{transform:scale(.98)}
+.app .btn:disabled{opacity:.35;cursor:not-allowed}
+.app .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);font-weight:500}
+.app .link{background:none;border:0;color:var(--muted);font:inherit;font-size:14px;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:8px 0}
+.app :focus-visible{outline:2px solid var(--star);outline-offset:3px}
+.app .spacer{flex:1}
+.app .hero-sky{margin:0 -8px 8px}
+.app .progress{display:flex;gap:5px;margin-bottom:26px}
+.app .progress i{flex:1;height:3px;border-radius:3px;background:var(--dim)}
+.app .progress i.on{background:var(--star)}
+.app .qcount{font-size:13px;color:var(--muted);margin-bottom:6px}
+.app .qhint{font-size:14px;color:var(--muted);margin-bottom:26px}
+.app .bignum{font-family:var(--serif);font-size:72px;font-weight:700;line-height:1;text-align:center;margin:22px 0 4px}
+.app .bignum small{font-size:22px;margin-left:6px;font-weight:500}
+.app .stepper{display:flex;align-items:center;justify-content:center;gap:28px;margin-bottom:18px}
+.app .stepper button{width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:var(--panel);color:var(--ink);font-size:26px;cursor:pointer}
+.app input[type=range]{width:100%;accent-color:var(--star);margin:8px 0 30px}
+.app .choices{display:grid;gap:12px;margin-top:6px}
+.app .choice{text-align:left;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:16px;padding:16px 18px;font:inherit;font-size:16px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.app .choice small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+.app .choice.sel{border-color:var(--star);box-shadow:0 0 0 1px var(--star) inset}
+.app .choice .dot{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--line);flex:none;display:grid;place-items:center}
+.app .choice.sel .dot{border-color:var(--star);background:var(--star)}
+.app .choice.sel .dot::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--btnink)}
+.app .fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0 14px}
+.app .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+.app .field input{width:100%;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:14px;padding:14px;font:inherit;font-size:20px}
+.app .bmi{font-size:14px;color:var(--muted);margin-bottom:24px;min-height:24px}
+.app .result-line{font-family:var(--serif);font-size:21px;line-height:1.6;margin:18px 0 8px}
+.app .result-line strong{color:var(--star);font-size:30px}
+.app .pct{font-size:14px;color:var(--muted);margin-bottom:22px}
+.app .note{border-left:2px solid var(--rose);padding:4px 0 4px 14px;margin:18px 0;font-size:15px}
+.app .compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 10px}
+.app .col{text-align:center}
+.app .col .lab{font-size:14px;color:var(--muted)}
+.app .col .val{font-family:var(--serif);font-size:40px;font-weight:700;line-height:1.2}
+.app .col.now .val{color:var(--star)}
+.app .bar{height:120px;display:flex;align-items:flex-end;justify-content:center;margin:10px 0}
+.app .bar span{width:46px;border-radius:10px 10px 4px 4px;background:var(--star);transition:height .9s cubic-bezier(.2,.8,.2,1)}
+.app .col.later .bar span{background:var(--dim)}
+.app .gap{text-align:center;font-family:var(--serif);font-size:19px;margin:6px 0 16px}
+.app .card916{aspect-ratio:9/16;max-height:72vh;margin:10px auto 16px;border-radius:22px;overflow:hidden;position:relative;
+  background:#0F1733;background-image:radial-gradient(120% 60% at 70% 0%, #26306A 0%, transparent 60%);color:#ECEAF8;
+  display:flex;flex-direction:column;padding:28px 22px 22px;box-shadow:0 20px 50px -20px rgba(0,0,0,.5)}
+.app .card916 .ct{font-family:var(--serif);font-size:22px;line-height:1.55;font-weight:700;margin-top:6px}
+.app .card916 .cf{margin-top:auto;font-size:12px;color:#A3A5CC;display:flex;justify-content:space-between;align-items:flex-end}
+.app .card916 .cf b{font-family:var(--serif);color:#ECEAF8;font-weight:500;font-size:13px}
+.app .toggle{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-bottom:14px;font-size:15px}
+.app .toggle input{width:22px;height:22px;accent-color:var(--star)}
+.app details{border-top:1px solid var(--line);padding:14px 0}
+.app details:last-of-type{border-bottom:1px solid var(--line)}
+.app summary{cursor:pointer;font-weight:500}
+.app details p{margin-top:10px;font-size:14px;color:var(--muted)}
+.app .row{display:grid;gap:10px;margin-top:10px}
+.app .hero-img{display:block;width:calc(100% + 16px);margin:0 -8px 22px;border-radius:24px;box-shadow:0 18px 40px -22px rgba(0,0,0,.6)}
+.app .sticker{display:block;background:#fff;border-radius:20px;overflow:hidden}
+.app .sticker img{display:block;width:100%}
+.app .top-sticker{width:62%;margin:0 auto 20px}
+.app .doc{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:start;margin:18px 0}
+.app .doc .sticker{border-radius:16px}
+.app .doc .who{font-size:13px;color:var(--muted);margin-bottom:4px}
+.app .doc .say{font-size:15px;line-height:1.7}
+.app .card916.light{background:#FFFFFF;background-image:radial-gradient(110% 55% at 70% 0%, #E9EEFB 0%, transparent 65%);color:#24306A}
+.app .card916.light svg:global(.sky) :global(.s){fill:rgba(36,48,106,.16)}
+.app .card916.light svg:global(.sky) :global(.lit){fill:#E2A93B;filter:drop-shadow(0 0 3px rgba(226,169,59,.5))}
+.app .card916.light .cf{color:#6A73A6}
+.app .card916.light .cf b{color:#24306A}
+.app .card916 .ci{width:46%;margin:auto 0 0 auto}
+.app .card916 .ci img{display:block;width:100%}
+.app .fade{animation:fade .45s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.app svg:global(.sky) :global(.s){fill:var(--dim);animation:twdim ease-in-out infinite alternate}
+@keyframes twdim{from{opacity:.35}to{opacity:1}}
+.app svg:global(.sky) :global(.tw){transform-box:fill-box;transform-origin:center;animation:twinkle ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:1;transform:scale(1)}45%{opacity:.55;transform:scale(.82)}55%{opacity:1;transform:scale(1.12)}}
+.app svg:global(.sky) :global(.halo){fill:url(#hg);opacity:0;animation:halo 1.2s ease forwards}
+@keyframes halo{0%{opacity:0}40%{opacity:1}100%{opacity:.5}}
+.app svg:global(.sky) :global(.hs0){stop-color:var(--star);stop-opacity:.45}
+.app svg:global(.sky) :global(.hs1){stop-color:var(--star);stop-opacity:0}
+.app svg:global(.sky) :global(.ms0){stop-color:var(--star);stop-opacity:0}
+.app svg:global(.sky) :global(.ms1){stop-color:var(--star);stop-opacity:1}
+.app svg:global(.sky) :global(.meteor){opacity:0;animation:meteor 7s linear 3.2s infinite}
+@keyframes meteor{0%{opacity:0;transform:translate(0,0)}3%{opacity:1}14%{opacity:0;transform:translate(-190px,110px)}100%{opacity:0;transform:translate(-190px,110px)}}
+.app svg:global(.sky) :global(.lit){fill:var(--star);filter:drop-shadow(0 0 3px var(--starglow));opacity:0;animation:light .6s ease forwards}
+@keyframes light{0%{opacity:0;transform:scale(.3)}70%{opacity:1;transform:scale(1.25)}100%{opacity:1;transform:scale(1)}}
+.app svg:global(.sky) :global(.lit){transform-box:fill-box;transform-origin:center}
+.app .card916 svg:global(.sky) :global(.s){fill:rgba(200,205,240,.22)}
+.app .card916 svg:global(.sky) :global(.lit){fill:#F4C96B;filter:drop-shadow(0 0 3px rgba(244,201,107,.55))}
+@media (prefers-reduced-motion: reduce){
+  .app, .app *{animation:none!important;transition:none!important}
+  svg:global(.sky) :global(.lit){opacity:1} svg:global(.sky) :global(.halo){opacity:.5} svg:global(.sky) :global(.meteor){display:none}
+}
