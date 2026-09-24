@@ -61,6 +61,18 @@ npm run test:parse            # 不用連網，測試解析邏輯有沒有壞掉
 - 要追蹤哪些主題、只收哪些期刊，改 `scripts/observatory.config.json`。
 - 本機 `npm run dev` 時，觀測站頁面上方會顯示「有幾篇待審核」，正式站不會出現。
 
+### 從 Slack 每日文獻摘要挑文章
+
+你每天早上的 Slack 文獻摘要，挑好的那幾則可以直接變成觀測站的待審稿：
+
+```bash
+node scripts/new-paper.mjs '{"id":"42567929","title":"中文標題", ...}'
+cat papers.json | node scripts/new-paper.mjs   # 一次多筆
+```
+
+實務上更簡單的做法：在 Cowork 對 Claude 說「把今天 Slack 上打 ✅ 的那幾則放進觀測站」，
+Claude 會讀 Slack、產生待審檔案，你再補上解讀。
+
 ### 讓它每週自動跑
 
 `.github/workflows/observatory.yml` 已經設定好：推上 GitHub 後，每週一台灣時間早上 8 點
