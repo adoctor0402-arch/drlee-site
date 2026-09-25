@@ -21,6 +21,10 @@ npm run dev
 | 備孕筆記文章 | `content/notes/*.md`（複製 `_範本.md` 開新文章） |
 | 接下來要寫哪些文章 | `content/notes/_文章地圖.md`（33 篇的清單、優先序、半年排程） |
 | 把草稿變成純文字給醫師改 | `python3 scripts/md-to-txt.py content/notes/<檔名>.md 輸出.txt` |
+
+> **同步規則（很重要）：** 所有改動都在雲端這一份做，再整份同步到 Mac。
+> 不要直接改 Mac 上的檔案，否則下一次同步會把它蓋掉。
+> （2026-09-25 就是這樣把已發布的 ERA 那篇打回草稿。）
 | 星際觀測站論文 | `content/observatory/*.md`（由抓取腳本產生） |
 | 星空試算工具（兩個） | `src/components/sky/`（`model.ts`＝自然懷孕公式、`eggs-model.ts`＝凍卵公式） |
 | 觀測站追蹤的主題與期刊 | `scripts/observatory.config.json` |

@@ -32,7 +32,7 @@ references:
     url: https://academic.oup.com/humrep/article/38/11/2062/7281712
   - text: Human Fertilisation and Embryology Authority (HFEA). Treatment add-ons - endometrial receptivity testing. 最後檢視 2023-10-16.
     url: https://www.hfea.gov.uk/treatments/treatment-add-ons/endometrial-receptivity-testing/
-draft: true
+draft: false
 ---
 
 ## 問題是什麼？
