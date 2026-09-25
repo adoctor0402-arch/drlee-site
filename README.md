@@ -20,6 +20,7 @@ npm run dev
 | 第一次門診頁（帶什麼、流程、FAQ） | `src/config/first-visit.ts` |
 | 備孕筆記文章 | `content/notes/*.md`（複製 `_範本.md` 開新文章） |
 | 接下來要寫哪些文章 | `content/notes/_文章地圖.md`（33 篇的清單、優先序、半年排程） |
+| 把草稿變成純文字給醫師改 | `python3 scripts/md-to-txt.py content/notes/<檔名>.md 輸出.txt` |
 | 星際觀測站論文 | `content/observatory/*.md`（由抓取腳本產生） |
 | 星空試算工具（兩個） | `src/components/sky/`（`model.ts`＝自然懷孕公式、`eggs-model.ts`＝凍卵公式） |
 | 觀測站追蹤的主題與期刊 | `scripts/observatory.config.json` |
