@@ -45,7 +45,7 @@ references:
     url: https://wrap.warwick.ac.uk/149870/
   - text: Singh N, Davis AA, Kumar S, Kriplani A. The effect of administration of intravenous intralipid on pregnancy outcomes in women with implantation failure after IVF/ICSI with non-donor oocytes - a randomised controlled trial. European Journal of Obstetrics & Gynecology and Reproductive Biology. 2019;240:45-51.
     url: https://www.sciencedirect.com/science/article/abs/pii/S0301211519302854
-draft: true
+draft: false
 ---
 
 ## 問題是什麼？
