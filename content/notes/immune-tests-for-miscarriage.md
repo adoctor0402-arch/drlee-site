@@ -1,6 +1,6 @@
 ---
 title: 反覆流產，免疫要驗哪些？
-summary: 「免疫檢查」不是一件事，它底下的項目證據強度差很多。這篇把它拆成四類，也說清楚我自己在看哪幾項、看到什麼會改變處方。
+summary: 「免疫檢查」不是一件事，它底下的項目證據強度差很多。這篇把它拆成四類，談一個我想挑戰的做法，也說清楚我自己在看哪幾項、看到什麼會改變處方。
 category: 反覆流產
 updated: 2026-09
 keyPoints:
@@ -9,6 +9,7 @@ keyPoints:
   - 確診之後用阿斯匹靈加肝素，這是整組免疫項目裡唯一有紮實證據的治療。
   - NK 細胞檢查沒有公認的標準值。不同研究用的切點從 12% 到 18%，同一個人不同月份驗也常常換一邊。
   - 血栓體質的檢查是最好的反例：大型試驗顯示，連驗出陽性的人用了抗凝血藥，活產率也沒有比較高。
+  - 用一個沒有公認標準值的數字去啟動昂貴又有風險的免疫用藥，這個流程我想提出來談。但我挑戰的不是走過這條路的人。
 references:
   - text: ESHRE Guideline Group on Recurrent Pregnancy Loss. Recurrent pregnancy loss - Guideline of the European Society of Human Reproduction and Embryology (2022 update). Human Reproduction Open. 2023;2023(1):hoad002.
     url: https://academic.oup.com/hropen/article/2023/1/hoad002/7068067
@@ -34,6 +35,16 @@ references:
     url: https://academic.oup.com/humrep/article/38/11/2062/7281712
   - text: Human Fertilisation and Embryology Authority (HFEA). Treatment add-ons - immunological tests and treatments for fertility. 最後檢視 2023-10-16.
     url: https://www.hfea.gov.uk/treatments/treatment-add-ons/immunological-tests-and-treatments-for-fertility/
+  - text: Practice Committee of the American Society for Reproductive Medicine. The role of immunotherapy in in vitro fertilization - a guideline. Fertility and Sterility. 2018;110(3):387-400.
+    url: https://www.asrm.org/practice-guidance/practice-committee-documents/the-role-of-immunotherapy-in-in-vitro-fertilization-a-guideline-2018/
+  - text: Practice Committee of the American Society for Reproductive Medicine. Recurrent implantation failure - a committee opinion. Fertility and Sterility. 2026;126(2):277-293.
+    url: https://www.asrm.org/practice-guidance/practice-committee-documents/recurrent-implantation-failure-a-committee-opinion-2026/
+  - text: Mariette X, Förger F, Abraham BP, et al. Lack of placental transfer of certolizumab pegol during pregnancy - results from CRIB, a prospective, postmarketing, pharmacokinetic study. Annals of the Rheumatic Diseases. 2018;77(2):228-233.
+    url: https://www.sciencedirect.com/science/article/pii/S0003496724009981
+  - text: Rimmer MP, Black N, Keay SD, Quenby S, Al Wattar BH. Intralipid infusion at time of embryo transfer in women with history of recurrent implantation failure - a systematic review and meta-analysis. Journal of Obstetrics and Gynaecology Research. 2021;47(6):2149-2156.
+    url: https://wrap.warwick.ac.uk/149870/
+  - text: Singh N, Davis AA, Kumar S, Kriplani A. The effect of administration of intravenous intralipid on pregnancy outcomes in women with implantation failure after IVF/ICSI with non-donor oocytes - a randomised controlled trial. European Journal of Obstetrics & Gynecology and Reproductive Biology. 2019;240:45-51.
+    url: https://www.sciencedirect.com/science/article/abs/pii/S0301211519302854
 draft: true
 ---
 
@@ -112,6 +123,66 @@ draft: true
 也就是說，連驗出陽性的人，用了那個藥也沒有比較好。ASRM 2026 年因此不建議在反覆流產的評估中常規檢驗血栓體質，並且點名 MTHFR 不應該驗[2]。
 
 一個檢查的價值不在於它能不能驗出東西，在於驗出來之後會不會改變接下來的做法。血栓體質這一類，答案是不會。
+
+## 我想特別提出來談的一件事
+
+前面四類講的是檢查。這一段講的是檢查之後發生的事。
+
+有兩個組合，我在門診裡反覆看到病人帶著病歷來問我：
+
+- 抽血驗到 TNF-α 偏高，於是開始打 TNF-α 抑制劑。
+- 幾項免疫數值被判定異常，於是開始打脂肪乳。
+
+這兩件事表面上不一樣，骨架是同一個。
+
+### 關於 TNF-α 抑制劑
+
+這一類藥本來是治療類風濕性關節炎、僵直性脊椎炎、乾癬的。用在那些病上，它治的是一個診斷已經成立的疾病，有明確的活動度指標可以追蹤。
+
+用在生殖這邊，選的常常是 certolizumab（欣膝亞）。這個選擇不是隨便挑的，它有藥理上的理由：在這一類藥裡面，它的胎盤通透性最低。2018 年有一個叫 CRIB 的研究測了 16 對母嬰，納入分析的 14 個新生兒裡，13 個在出生時血中測不到這個藥[16]。
+
+但這裡有一個很容易滑過去的轉折。「在懷孕期間使用相對安全」和「這個病人需要用它」，是兩個不同的問題。前者被證明了，不代表後者成立。
+
+而後者的依據在哪裡？血清 TNF-α 的數值，從來沒有被驗證成可以用來決定要不要用這個藥的指標。沒有公認的切點，沒有哪個數字以上該用、以下不該用的研究。
+
+指引的立場是一致的。ESHRE 2023 年的加做項目指引把 anti-TNF 明確列入不建議使用[11]；美國 ASRM 2018 年的指引對 adalimumab 的結論是證據不足，等級 C[13]；ASRM 2026 年寫 etanercept 在反覆著床失敗的使用「應該限於設計良好的隨機試驗」[14]。整個生殖領域目前只有一篇隨機試驗，做在反覆流產族群、單一中心，不是試管族群。
+
+而這一類藥的仿單上帶著黑框警語：嚴重感染與惡性腫瘤。
+
+### 關於脂肪乳
+
+脂肪乳劑本來是靜脈營養的東西。用在生殖的立論是它可以抑制 NK 細胞的毒殺活性，ASRM 2026 年的文件也是這樣描述這個立論的[14]。
+
+問題就回到前面那一段。NK 沒有公認的切點。用一個沒有切點的數字去決定要不要開始治療，那個決定的依據本身並不存在。
+
+證據的部分也值得看清楚。有一篇看起來很正面的統合分析，納入五篇隨機試驗，得到臨床懷孕率與活產率都顯著提高的結論[17]。但那五篇裡，後來有兩篇被期刊撤稿。把撤稿的清掉之後，剩下的只有一篇 105 人的單盲、單中心試驗[15]，獨立的證據評估給它的等級是極低。
+
+各國的評級：英國 HFEA 給灰燈，意思是證據不足到無法評分[12]；ESHRE 2023 列入不建議[11]；ASRM 2026 寫證據不足[14]。另外，對蛋、黃豆或花生油過敏的人，脂肪乳劑有嚴重反應的風險[12]。
+
+### 共同的骨架
+
+把這兩件事拆開來看，步驟是一樣的：
+
+1. 驗一個沒有公認標準值的數字
+2. 那個數字被判定為異常
+3. 一個昂貴、而且有風險的藥被啟動
+4. 後來懷孕了，於是這整條路徑被記成有效
+
+第四步是關鍵，而且它是這整件事最難拆開的地方。
+
+### 寫給已經走過這條路的人
+
+如果你做過這些治療，我要先說清楚：這一段不是在說你做錯了什麼。
+
+會走到打免疫針這一步的人，通常已經失去過好幾次。那種一次又一次的落空，不是外人幾句話說得完的。在那個狀態下，如果有人告訴你終於找到原因了、而且有藥可以處理，那句話有多難拒絕，我完全理解。換作是我的家人，我不確定自己當下會不會比較冷靜。
+
+如果你後來懷孕了、孩子現在就在身邊，我更不會說那是白做的。但我想讓你知道一個數字。
+
+前面提過的 ALIFE2 試驗裡，那一組只用標準照護、沒有額外用藥的女性，活產率是 71%[9]。而她們是一群已經反覆流產、而且確診了遺傳性血栓體質的人。
+
+也就是說，反覆流產之後的下一次懷孕，本來就有相當高的機會成功。這正是為什麼一個沒有對照組的治療特別容易看起來有效。不是因為做那件事的人不誠實，是因為在一個本來就有很大機會成功的過程裡，你很難分辨結果是藥帶來的，還是時間帶來的。這就是為什麼我們需要對照組，也是為什麼那兩篇被撤稿的研究會讓整個領域的估計整個偏掉。
+
+所以我想挑戰的，從來不是走過這條路的人。是那個在數字還沒有意義的時候，就把針推出來的流程。
 
 ## 我的解讀
 
