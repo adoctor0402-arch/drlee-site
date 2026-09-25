@@ -41,15 +41,26 @@ function parseFile(file: string): Note {
   };
 }
 
-/** 讀取所有已發布的筆記，最新的在前面。檔名開頭是 _ 的會被忽略（範本用）。 */
-export function getNotes(): Note[] {
+/** 本機開發時（npm run dev）才會看到草稿；正式網站永遠不會。 */
+const showDrafts = process.env.NODE_ENV === "development";
+
+function readAll(): Note[] {
   if (!fs.existsSync(NOTES_DIR)) return [];
   return fs
     .readdirSync(NOTES_DIR)
     .filter((f) => f.endsWith(".md") && !f.startsWith("_"))
     .map(parseFile)
-    .filter((n) => !n.draft)
     .sort((a, b) => b.updated.localeCompare(a.updated));
+}
+
+/** 讀取筆記，最新的在前面。檔名開頭是 _ 的會被忽略（範本、地圖、研究筆記用）。 */
+export function getNotes(): Note[] {
+  return readAll().filter((n) => showDrafts || !n.draft);
+}
+
+/** 待審核的草稿篇數（只在本機開發時顯示提醒用） */
+export function countDrafts(): number {
+  return readAll().filter((n) => n.draft).length;
 }
 
 export function getNote(slug: string): Note | undefined {

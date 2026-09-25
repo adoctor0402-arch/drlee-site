@@ -3,7 +3,7 @@ import Link from "next/link";
 import { BookingButton } from "@/components/booking";
 import { NoteCard } from "@/components/note-card";
 import { Sticker, Twinkle } from "@/components/prince";
-import { getCategories, getNotes } from "@/lib/notes";
+import { countDrafts, getCategories, getNotes } from "@/lib/notes";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/notes" },
@@ -18,6 +18,7 @@ export default async function NotesPage({ searchParams }: PageProps<"/notes">) {
   const all = getNotes();
   const categories = getCategories();
   const notes = active ? all.filter((n) => n.category === active) : all;
+  const drafts = process.env.NODE_ENV === "development" ? countDrafts() : 0;
 
   return (
     <>
@@ -42,6 +43,12 @@ export default async function NotesPage({ searchParams }: PageProps<"/notes">) {
 
       <section className="py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-10">
+          {drafts > 0 ? (
+            <p className="mb-8 rounded-xl border border-gold/50 bg-gold/10 px-4 py-3 text-sm leading-relaxed text-deep">
+              本機提醒：有 {drafts} 篇草稿待審核（卡片上有「草稿」標記）。這行字和草稿都只會出現在開發模式，正式網站上看不到。
+            </p>
+          ) : null}
+
           {/* 分類 */}
           <ul className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:px-0">
             <li>

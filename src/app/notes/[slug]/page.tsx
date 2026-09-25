@@ -45,6 +45,14 @@ export default async function NotePage({ params }: PageProps<"/notes/[slug]">) {
             <Link href="/notes" className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-deep">
               <span aria-hidden>←</span> 備孕筆記
             </Link>
+            {note.draft ? (
+              <p className="mt-5 rounded-xl border border-gold/50 bg-gold/10 px-4 py-3 text-sm leading-relaxed text-deep">
+                <strong>草稿，尚未發布。</strong>只有在本機開發模式下看得到，正式網站上沒有這一頁。
+                審完之後把 <code className="rounded bg-white/70 px-1">content/notes/{note.slug}.md</code> 開頭的{" "}
+                <code className="rounded bg-white/70 px-1">draft: true</code> 改成{" "}
+                <code className="rounded bg-white/70 px-1">false</code>，它就會上線。
+              </p>
+            ) : null}
             <p className="mt-6 flex items-center gap-2 font-display text-sm italic tracking-[0.2em] text-gold">
               <Twinkle className="h-3 w-3" />
               {note.category}

@@ -44,7 +44,12 @@ export function NoteCard({ note, index = 0 }: { note: NoteMeta; index?: number }
         <NoteArt variant={index} />
       </div>
       <div className="flex flex-1 flex-col p-7">
-        <p className="text-xs font-medium tracking-widest text-gold">{note.category}</p>
+        <p className="flex items-center gap-2 text-xs font-medium tracking-widest text-gold">
+          {note.category}
+          {note.draft ? (
+            <span className="rounded-full bg-gold/20 px-2 py-0.5 tracking-normal text-deep">草稿</span>
+          ) : null}
+        </p>
         <h3 className="mt-2 font-serif text-xl font-semibold leading-snug text-deep group-hover:underline group-hover:decoration-gold/60 group-hover:underline-offset-4">
           {note.title}
         </h3>
