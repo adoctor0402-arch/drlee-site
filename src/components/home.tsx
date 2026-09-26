@@ -144,15 +144,23 @@ export function SkyBand() {
         <div className="relative flex-1">
           <Eyebrow light>Interactive</Eyebrow>
           <h2 className="mt-3 font-serif text-2xl font-semibold leading-snug sm:text-3xl">
-            在試管之前，先看看你們的星空
+            把「還有多少機會」，變成看得見的星空
           </h2>
           <p className="mt-3 max-w-xl text-[15.5px] leading-[1.9] text-ivory/75">
-            被診斷不孕，不代表只能靠治療。回答 7 個問題，約 30 秒，估算你們在不治療的情況下、
-            一年內自然懷孕並生下寶寶的機率。資料只在你的裝置上計算，不會上傳。
+            兩個以近年國際研究為基礎的試算工具。
+            <strong className="font-medium text-ivory">你們的星空</strong>
+            估算不治療的情況下、一年內自然懷孕並生下寶寶的機率；
+            <strong className="font-medium text-ivory">我的卵子，夠不夠？</strong>
+            估算凍卵之後至少迎來一個寶寶的累積機率。各約 30 秒，資料只在你的裝置上計算，不會上傳。
           </p>
-          <Link href="/sky" className={`${buttonClass("sun")} mt-6`}>
-            開始試算
-          </Link>
+          <div className="mt-6 flex flex-wrap justify-center gap-3 md:justify-start">
+            <Link href="/sky" className={buttonClass("sun")}>
+              你們的星空
+            </Link>
+            <Link href="/sky/eggs" className={buttonClass("ghostLight")}>
+              我的卵子，夠不夠？
+            </Link>
+          </div>
         </div>
       </div>
     </section>
