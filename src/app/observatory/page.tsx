@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/observatory" },
   title: "星際觀測站",
   description:
-    "星際觀測站：小王子醫師（李俊逸醫師）追蹤生殖醫學的最新研究，用白話說清楚每篇論文在問什麼、發現了什麼、對你可能代表什麼。",
+    "星際觀測站：小王子醫師（李俊逸醫師）追蹤生殖醫學的國際研究消息，附上期刊、日期與原文連結，再用幾句話說我怎麼看。",
 };
 
 export default async function ObservatoryPage({ searchParams }: PageProps<"/observatory">) {
@@ -33,7 +33,7 @@ export default async function ObservatoryPage({ searchParams }: PageProps<"/obse
             <p className="mt-4 font-hand text-2xl text-sun">看見生命的可能，也看見研究的方向</p>
             <p className="mt-5 max-w-lg text-[16px] leading-[1.95] text-ivory/80">
               生殖醫學每週都有新的研究發表。我讓系統持續掃描國際期刊，挑出值得看的幾篇，
-              親自讀過之後，用白話寫下：這篇在問什麼、發現了什麼、對你可能代表什麼。
+              親自讀過之後寫下我的看法。消息本身附上期刊、日期和原文連結，我的部分盡量短。
             </p>
             <p className="mt-5 text-sm text-ivory/60">
               每篇都附上原始論文連結，你可以自己查證，也可以帶到門診一起討論。
@@ -81,27 +81,22 @@ export default async function ObservatoryPage({ searchParams }: PageProps<"/obse
           )}
 
           {papers.length > 0 ? (
-            <ul className="mt-10 space-y-4">
+            <ul className="mt-10 divide-y divide-deep/[0.08] border-y border-deep/[0.08]">
               {papers.map((p) => (
                 <li key={p.pmid}>
                   <Link
                     href={`/observatory/${p.pmid}`}
-                    className="group block rounded-3xl border border-deep/[0.07] bg-white p-7 transition-all duration-500 hover:-translate-y-0.5 hover:border-gold/50 hover:shadow-[0_24px_50px_-30px_rgba(23,54,93,0.35)] sm:p-8"
+                    className="group flex flex-col gap-1.5 py-5 transition-colors sm:flex-row sm:items-baseline sm:gap-5"
                   >
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
-                      <span className="rounded-full bg-mist/70 px-3 py-1 font-medium text-deep">{p.topic}</span>
-                      <span className="font-display italic tracking-wide text-gold">{p.journal}</span>
-                      <span className="text-muted/80">{formatDate(p.pubdate)}</span>
-                    </div>
-                    <h2 className="mt-4 font-serif text-[21px] font-semibold leading-snug text-deep group-hover:underline group-hover:decoration-gold/60 group-hover:underline-offset-4 sm:text-[23px]">
+                    <span className="flex shrink-0 items-center gap-2.5 text-xs sm:w-60">
+                      <span className="whitespace-nowrap tabular-nums text-muted/80">{formatDate(p.pubdate)}</span>
+                      <span className="truncate font-display italic tracking-wide text-gold">{p.journal}</span>
+                    </span>
+                    <span className="flex-1 font-serif text-[17.5px] font-semibold leading-snug text-deep decoration-gold/60 underline-offset-4 group-hover:underline sm:text-[19px]">
                       {p.title}
-                    </h2>
-                    {p.takeaways.length > 0 && (
-                      <p className="mt-3 text-[15.5px] leading-[1.85] text-muted">{p.takeaways[0]}</p>
-                    )}
-                    <span className="mt-5 inline-flex items-center gap-1.5 text-[15px] font-medium text-deep">
-                      看小王子醫師的解讀
-                      <span className="text-gold transition-transform group-hover:translate-x-1" aria-hidden>→</span>
+                    </span>
+                    <span className="shrink-0 self-start rounded-full bg-mist/70 px-2.5 py-1 text-[11px] text-deep/80 sm:self-center">
+                      {p.topic}
                     </span>
                   </Link>
                 </li>

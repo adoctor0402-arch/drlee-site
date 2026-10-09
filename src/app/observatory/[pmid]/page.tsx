@@ -59,7 +59,7 @@ export default async function PaperPage({ params }: PageProps<"/observatory/[pmi
               </p>
               <p className="mt-3 flex flex-wrap gap-x-5 gap-y-1">
                 <a href={paper.url} target="_blank" rel="noopener" className="text-deep underline-offset-4 hover:underline">
-                  PubMed 原文 ↗
+                  {paper.url.includes("pubmed") ? "PubMed 原文" : `${paper.journal} 原文`} ↗
                 </a>
                 {paper.doi && (
                   <a
@@ -74,7 +74,7 @@ export default async function PaperPage({ params }: PageProps<"/observatory/[pmi
               </p>
             </div>
 
-            <p className="mt-6 text-sm text-muted/80">由 {site.doctor} 閱讀並撰寫解讀</p>
+            <p className="mt-6 text-sm text-muted/80">由 {site.doctor} 閱讀並寫下看法</p>
           </div>
         </header>
 
