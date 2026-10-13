@@ -6,7 +6,8 @@ updated: 2026-10
 keyPoints:
   - 台灣主要生殖中心的設備頁幾乎可以互換貼。縮時攝影、AI 選胚、紡錘體定位，至少五到九家都有。認證也一樣，CAP 在台灣的生殖醫學界不是稀有的東西。
   - 買不到的有四件：治療量、自己做的研究、自己做的硬體、以及把檢驗留在院內。
-  - 我們用縮時攝影，但它的隨機試驗證據不支持它能提高活產率。這件事我選擇寫出來。
+  - 實驗室和醫院同年成立，1986 年到現在四十年，主任和幾位資深胚胎師是從頭做到今天的同一批人。
+  - 我們用縮時攝影，但它的隨機試驗證據不支持它能提高活產率。紡錘體定位也一樣，沒有隨機試驗，也沒有任何機構評級可以引用。這兩件事我選擇寫出來。
   - 「第幾代試管嬰兒」這個說法在國際學會的文件裡不存在。這一頁不會用它。
 notes:
   - does-everyone-need-pgt-a
@@ -44,16 +45,32 @@ references:
   - text: Lin PY, Lee CI, Cheng EH, et al. Clinical outcomes of single mosaic embryo transfer - high-level or low-level mosaic embryo, does it matter? Journal of Clinical Medicine. 2020;9(6):1695.
     url: https://www.mdpi.com/2077-0383/9/6/1695
   - text: 第 22 屆國家新創獎，非侵入式胚胎粒線體功能檢測平台（與國立中興大學合作）。2025 年 12 月。
+  - text: Innovative technology for evaluation of sperm DNA double-strand breaks diagnoses male factor infertility and prevents reproductive failures. Scientific Reports. 2023;13:18996.（李俊逸為共同第一作者）
+    url: https://www.nature.com/articles/s41598-023-45979-3
+  - text: Lee CI, et al. Spindle-to-oocyte light retardance ratio as a noninvasive biomarker for oocyte quality assessment - a prospective cohort study. Frontiers in Endocrinology. 2026;17:1803476.
+    url: https://doi.org/10.3389/fendo.2026.1803476
+  - text: Petersen CG, Oliveira JBA, Mauri AL, et al. Relationship between visualization of meiotic spindle in human oocytes and ICSI outcomes - a meta-analysis. Reproductive BioMedicine Online. 2009;18(2):235-243.
+    url: https://doi.org/10.1016/S1472-6483(10)60261-1
+  - text: Woodward BJ, Montgomery SJ, Hartshorne GM, Campbell KHS, Kennedy R. Spindle position assessment prior to ICSI does not benefit fertilization or early embryo quality. Reproductive BioMedicine Online. 2008;16(2):232-238.
+    url: https://doi.org/10.1016/S1472-6483(10)60579-2
+  - text: Ahmad MF, Elias MH, Mat Jin N, et al. Oocytes quality assessment - the current insight, a systematic review. Biology. 2024;13(12):978.
+    url: https://www.mdpi.com/2079-7737/13/12/978
+  - text: ASRM Practice Committee. Witnessing and protocol deviations in the in vitro fertilization and andrology laboratory - a committee opinion. Fertility and Sterility. 2026;126:38-48.
+    url: https://www.asrm.org/practice-guidance/practice-committee-documents/witnessing-and-protocol-deviations-in-the-in-vitro-fertilization-and-andrology-laboratory-a-committee-opinion/
+  - text: Sterckx J, et al. Ten years of experience with an electronic witnessing system in a high-volume medically assisted reproduction laboratory. Human Reproduction. 2023;38(8):1529-1537.
+    url: https://academic.oup.com/humrep/article/38/8/1529/7193345
 draft: false
 ---
 
 ## 先說一件掃興的事
 
-如果你比較過幾家生殖中心的網頁，應該會發現它們長得很像。縮時攝影培養箱、AI 選胚、紡錘體定位、胚胎著床前染色體篩檢、玻璃化冷凍、電子配對系統。幾乎每一家都有，而且用的詞幾乎一樣。
+如果你比較過幾家生殖中心的網頁，應該會發現它們長得很像。縮時攝影培養箱、AI 選胚、紡錘體定位、胚胎著床前染色體篩檢、玻璃化冷凍。幾乎每一家都有，而且用的詞幾乎一樣。
 
-我查過。縮時攝影在台灣至少九家中心公開宣稱擁有，紡錘體定位至少五家，AI 選胚則是多家在寫，其中有同業也發表了同儕審查的論文。這些東西現在是配備，不是特色。
+我查過。縮時攝影在台灣至少九家中心公開宣稱擁有，紡錘體定位連我們在內至少五家，AI 選胚則是多家在寫，其中有同業也發表了同儕審查的論文。這些東西現在是配備，不是特色。
 
-所以這一頁我不列設備清單。我只放兩件可以被第三方查證的事，加上一段關於這些技術證據有多強的說明。
+查的過程裡有一項的結果和我原本以為的相反，寫在第四件那一節。
+
+所以這一頁我不列設備清單。我只放四件可以被第三方查證的事，加上一段關於這些技術證據有多強的說明。
 
 ## 第一件：治療量
 
@@ -110,9 +127,43 @@ draft: false
 
 多數生殖中心的胚胎染色體篩檢是外送到商業實驗室。我們院內有自己的基因診斷實驗室、細胞遺傳學（核型分析）實驗室、動物實驗室與胚胎幹細胞培養系統。
 
+先把話說完整，因為這一頁不挑好的講。我們也有外送的項目。子宮內膜容受性檢測（ERA）和整套免疫不孕檢查都是外送，前者在台灣由單一家公司代理，誰付錢誰都做得到。那些不是我們的特色，我不會把它們寫成特色。
+
 差別在哪裡。外送的時候，實驗室是一個黑盒子：報告回來寫什麼就是什麼，想問判讀的細節、想重新分析、想在切片條件上做調整，都要跨一層。留在院內，這些事情是同一個團隊在處理，而且出問題的時候找得到人。
 
 這也是為什麼我們做得出前面那些研究。你沒辦法用一份外送報告去研究滋養層切片和內細胞團的一致性，那需要把胚胎拆開來重驗，而那只有自己的實驗室做得到。
+
+### 同一批人做了四十年
+
+院內實驗室真正的價值不在那幾個房間，在裡面的人沒有換。
+
+生殖醫學中心和胚胎實驗室跟醫院同年成立，1986 年，到今年四十年。實驗室主任黃俊嘉博士從那時候做到現在，1990 年台灣生殖醫學會籌組的時候他擔任總召。實驗室現在有 22 位胚胎師，3 位博士、14 位碩士、5 位學士，其中 4 位資深胚胎師的經驗超過四十年，是他一個一個帶出來的。研究會、期刊討論會、臨床個案討論會每週各一次，這個制度也跑了四十年。
+
+這一條我沒辦法給你同業的對照數字，因為沒有人公布人員流動率。我只能說，一台培養箱下單三個月就會到，一個做了四十年還沒散的團隊沒辦法下單。
+
+### 幾項台灣少見的檢查
+
+把上面兩件事放在一起，會長出一些別的地方找不到的檢查。我按證據強弱排，弱的我會講弱。
+
+**精蟲雙股 DNA 碎片檢測。** 這一項證據最完整。精子 DNA 碎片檢查本身很多地方都有，但一般測的是單股和雙股混在一起的總碎片率。我們和一家台中的生技公司合作，開發出用聚丙烯醯胺包埋精子染色質的方法，可以把雙股斷裂單獨抓出來，2023 年發表在 Scientific Reports，我是共同第一作者[17]。我比對過台灣十幾家生殖中心的網站，沒有找到第二家提供。
+
+**卵子紡錘體光學延遲比（SOLRR）。** 範圍要先講清楚：紡錘體定位這個技術本身台灣至少五家有，不是我們獨有的。我們多做的是把紡錘體和整顆卵子的雙折射比值量化成一個卵子品質指標，今年發表在 Frontiers in Endocrinology，我是第一作者[18]。論文裡我們自己寫得很明白，這個指標的 AUC 是 0.63，屬於探索性的客觀指標，而且沒有測臨床懷孕或活產結果。所以它現在是研究工具，不是可以賣給你的檢查。
+
+**胚胎植入前多基因疾病風險評估（PGT-H）。** 評估十項常見疾病的風險，台灣目前查不到第二家在做。但有兩件事要擺在前面。第一，這項技術我們還沒有自己的同儕審查論文，同業第一個會問的就是這個。第二，美國生殖醫學會 2026 年的倫理意見書對多基因風險評估持保留態度，連同業的學術專欄也寫它距離明確改善臨床結局還有很長的路。它的結果是機率性的，是輔助參考，不是治療也不是預防。我去年受訪時講的那句話現在仍然成立：這項技術還在臨床應用的初期階段。
+
+**精子粒線體膜電位、精子結合力檢查（HBA）。** 這兩項台灣同樣查不到第二家，但我們自己也還沒有發表的數據。我把它們列出來，是因為確實有在做，不是因為它們現在能證明什麼。
+
+### 還有一件是流程，不是檢查
+
+電子見證系統（Witness）。每一個卵子、精子、胚胎的容器上都貼晶片，每一次移動、每一次轉移都自動核對身分，不符就當場跳警告。
+
+我本來以為這是基本配備。寫這一頁去查才發現不是：台灣公開可查的生殖中心網站上，我只找到三家明確寫出有電子見證，我們是其中一家。這不代表別家沒有，醫學中心本來就不會把實驗室的流程設備放在網頁上，所以正確的說法是「公開宣稱的只有三家」，不是「全台只有三家」。
+
+但是它不會提高你的成功率，我也不打算這樣講。歐洲和美國的實驗室指引寫的都是「第二個人核對，或者電子核對」，兩者等價，沒有任何一份文件要求必須是電子的[22]。英國主管機關的 add-on 評級清單裡沒有它，因為它從來沒有主張能提高活產率，根本不符合送審的定義。唯一有臨床結果的比較研究，受精率、囊胚率、懷孕率、活產率全部沒有差異，而這本來就是預期中的事。
+
+它的意義只有一個，降低拿錯的機率。目前最大的一份資料來自布魯塞爾一家中心十年、十萬多個週期，不符事件大約每千次核對出現兩到三次，其中會造成實質問題的約萬分之一點七[23]。那篇論文誠實寫了一句，我覺得應該一起放上來：永遠無法證明這些錯誤如果改用人工核對會不會也被攔下來。而且電子核對會帶來新的風險，叫做盲目核對，機器說過了，人就不看了。
+
+所以它不是升級版的人工核對，是另一種人工核對。我們兩個都做。
 
 ## 我們用的設備，以及它的證據
 
@@ -129,6 +180,8 @@ Cochrane 在 2019 年整合了 9 個隨機試驗、2,955 對夫婦，結論是�
 英國人類受精與胚胎學管理局給縮時攝影的評級是黑燈，也就是最差的一級[5]。歐洲生殖醫學會 2023 年的 add-ons 文件，對它的建議是 strong recommendation against[6]。
 
 AI 選胚那邊也一樣。唯一的隨機雙盲試驗 2024 年發表在 Nature Medicine，1,066 人，活產率 39.8% 對 43.5%，連「不比人工差」都沒有證明出來[7]。
+
+紡錘體定位也要放進來，因為上一節我才說它是我們做 SOLRR 的基礎。看得到紡錘體的卵子，受精和胚胎發育確實表現比較好，2009 年一篇整合 10 篇研究的統合分析是這樣[19]。但那講的是卵子本身的好壞，不是這個技術的效果。真正進到「依紡錘體位置調整注射角度」這個操作層面，2008 年唯一一篇前瞻、而且對紡錘體位置設盲的研究是陰性的，受精率和胚胎品質都沒有差，最好的結果反而出現在紡錘體靠近注射點的卵子，和「要避開」的假設相反[20]。2024 年一篇系統性回顧的建議是，這項評估應該限於研究情境與特定中心[21]。英國主管機關和歐洲生殖醫學會的 add-on 清單裡都找不到它，所以我沒有評級可以引用。這裡要說準：是查無評級，不是被評為無效。
 
 那我們為什麼還在用？
 
