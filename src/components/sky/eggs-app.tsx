@@ -188,28 +188,44 @@ export function EggsApp() {
       const lo = Math.min(model, obs.p);
       const hi = Math.max(model, obs.p);
       const diff = Math.abs(model - obs.p);
+      const sure = Math.floor(lo / 10);
+      const maybe = Math.max(0, Math.ceil(hi / 10) - sure);
       const targets = [0.5, 0.6, 0.7, 0.8];
       return (
         <>
           <EggSky mii={mii} age={age} p={p} />
-          <Legend showGlow />
-          <p className={s.range}>
-            {age} 歲取得的 {mii} 顆成熟卵子，估計至少一個活產／持續妊娠的累積機率約在{" "}
-            <strong>
-              {lo}–{hi}%
-            </strong>{" "}
-            之間。
+          <p className={s.answer}>
+            {age} 歲凍的 {mii} 顆成熟卵子，
+            <br />
+            10 個人裡大約有{" "}
+            <b>
+              {sure}
+              {maybe > 0 ? ` 到 ${sure + maybe}` : ""}
+            </b>
+            <span className={s.tail}> 個生下寶寶。</span>
+          </p>
+          <div className={s.dots} aria-hidden>
+            {Array.from({ length: 10 }, (_, i) => (
+              <span
+                key={i}
+                className={i < sure ? s.dotOn : i < sure + maybe ? s.dotMaybe : s.dotOff}
+              />
+            ))}
+          </div>
+          <p className={`${s.small} ${s.muted}`}>
+            {maybe > 0 ? "實心的是兩種算法都同意的，空心的那幾個是它們之間的差距。" : ""}
+            「生下寶寶」指至少一次活產或持續妊娠，不是驗到兩條線。換算成百分比是 {lo}–{hi}%。下面兩個數字就是這個區間的兩端，為什麼會差這麼多，也寫在下面。
           </p>
           <div className={s.cmp2}>
             <div className={`${s.box} ${s.model}`}>
               <b>{model}%</b>
-              <span>文獻模型估計{capped ? "（已封頂）" : ""}</span>
+              <span>照模型算出來的{capped ? "（已封頂）" : ""}</span>
             </div>
             <div className={s.box}>
               <b>{obs.p}%</b>
               <span>
-                研究中同組實際觀察
-                <br />（{obs.ageLabel} 歲・{obs.miiLabel} 顆，n={obs.n}）
+                研究裡真的有這些人
+                <br />（{obs.ageLabel} 歲・{obs.miiLabel} 顆，共 {obs.n} 人）
               </span>
             </div>
           </div>
@@ -230,7 +246,8 @@ export function EggsApp() {
           <div className={s.note}>
             <b>研究原型：</b>論文公開了年齡與 MII 的迴歸係數，但未公開截距；本版截距依作者的案例反推重建，因此不是作者的官方計算器。
           </div>
-          <h2 style={{ fontSize: 21, marginTop: 24 }}>距離各個目標還有多遠</h2>
+          <Legend showGlow />
+          <h2 style={{ fontSize: 21, marginTop: 24 }}>不同機會，大約需要幾顆</h2>
           <div className={s.row}>
             {targets.map((t) => {
               const nd = need(age, t);
@@ -238,14 +255,17 @@ export function EggsApp() {
               const far = nd > 45;
               return (
                 <div key={t} className={`${s.tgt} ${d === 0 ? s.done : ""} ${far ? s.off : ""}`}>
-                  <span>模型 {Math.round(t * 100)}% 目標</span>
+                  <span>
+                    10 個人有 {Math.round(t * 10)} 個生下寶寶
+                    <i className={s.pct}>{Math.round(t * 100)}%</i>
+                  </span>
                   <b>{d === 0 ? "✓ 已達到" : far ? `約需 ${nd} 顆・超出研究觀察範圍` : `約需 ${nd} 顆・再 ${d} 顆`}</b>
                 </div>
               );
             })}
           </div>
           <p className={`${s.small} ${s.muted}`}>
-            這些是「依此文獻模型估計，相近族群要達到該機率所對應的成熟卵數」，不是「妳一定需要幾顆」。研究中實際解凍 45
+            「生下寶寶」指至少一次活產或持續妊娠，不是驗到兩條線。這些數字是依此文獻模型估計、相近族群要達到該機會所對應的成熟卵數，不是妳一定需要幾顆，也不是妳應該達到的目標。研究中實際解凍 45
             顆以上的人非常少，超出範圍的數字僅供理解趨勢。
           </p>
           <div className={s.spacer} />

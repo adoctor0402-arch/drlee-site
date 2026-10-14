@@ -156,6 +156,16 @@
 .app .range strong{color:var(--star);font-size:28px}
 .app .tgt{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-bottom:10px;font-size:15px}
 .app .tgt b{font-weight:700;text-align:right}
+.app .answer{font-size:22px;line-height:1.55;margin:18px 0 10px;font-weight:600}
+.app .answer b{font-size:34px;font-weight:800;color:var(--star);padding:0 2px;line-height:1;white-space:nowrap}
+.app .answer .tail{white-space:nowrap}
+.app .dots{display:flex;gap:7px;margin:0 0 14px;flex-wrap:wrap}
+.app .dots span{width:22px;height:22px;border-radius:50%}
+.app .dotOn{background:var(--star)}
+.app .dotOff{background:transparent;border:1.5px solid var(--line)}
+.app .dotMaybe{background:transparent;border:2.5px solid var(--star)}
+.app .tgt > span{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.app .tgt .pct{font-style:normal;font-size:12px;opacity:.5;letter-spacing:.02em}
 .app .tgt.off{opacity:.55}
 .app .tgt.done b{color:var(--star)}
 .app .flag{border:1px solid var(--rose);border-radius:14px;padding:12px 16px;font-size:14px;line-height:1.65;margin:14px 0}
