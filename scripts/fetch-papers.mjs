@@ -55,6 +55,24 @@ export async function searchTopic(topic, { days, perTopic }) {
 }
 
 /** esummary JSON → 乾淨的論文資料 */
+// PubMed 回傳的是期刊縮寫（Hum Reprod），但網站上二十幾篇都是全名（Human Reproduction）。
+// 這張表讓自動抓回來的稿子跟手寫的長得一樣。沒對到的就照 PubMed 原樣。
+const JOURNAL_FULL_NAMES = {
+  "Hum Reprod": "Human Reproduction",
+  "Hum Reprod Update": "Human Reproduction Update",
+  "Hum Reprod Open": "Human Reproduction Open",
+  "Fertil Steril": "Fertility and Sterility",
+  "Fertil Steril Rep": "F&S Reports",
+  "Reprod Biomed Online": "Reproductive BioMedicine Online",
+  "J Assist Reprod Genet": "Journal of Assisted Reproduction and Genetics",
+  "N Engl J Med": "The New England Journal of Medicine",
+  "Lancet": "The Lancet",
+  "BMJ": "The BMJ",
+  "Nat Med": "Nature Medicine",
+  "Hum Fertil (Camb)": "Human Fertility",
+  "Reprod Biol Endocrinol": "Reproductive Biology and Endocrinology",
+};
+
 export function parseSummary(result, pmid) {
   const r = result?.[pmid];
   if (!r || r.error) return null;
@@ -63,7 +81,7 @@ export function parseSummary(result, pmid) {
   return {
     pmid,
     title: (r.title ?? "").replace(/\.$/, "").replace(/<[^>]+>/g, "").trim(),
-    journal: r.source ?? "",
+    journal: JOURNAL_FULL_NAMES[r.source] ?? r.source ?? "",
     pubdate: (r.sortpubdate || r.pubdate || "").slice(0, 10).replace(/\//g, "-"),
     authors,
     firstAuthor: authors[0] ?? "",
@@ -111,13 +129,17 @@ async function draftChinese(paper, abstract) {
 
 請用台灣繁體中文輸出 JSON（不要其他文字）：
 {
-  "titleZh": "中文標題，20 字內，用病人看得懂的說法",
-  "takeaways": ["白話重點一句", "白話重點一句", "白話重點一句"],
-  "whatItAsks": "這篇研究在問什麼，兩句話以內",
-  "whatItFound": "研究發現了什麼，兩句話以內，數字要忠於原文"
+  "titleZh": "中文標題，20 字內，用病人看得懂的說法，盡量寫成一個問句",
+  "takeaways": ["條列一", "條列二", "條列三", "條列四"]
 }
 
-規則：不要誇大、不要寫成治療建議、不要出現「保證」「最有效」這類字眼；原文沒有的數字不要自己補。`;
+takeaways 寫法：三到四條，每一條是完整的一句話，交代研究設計、樣本數與主要結果。
+數字要帶上效應量與信賴區間（例如「校正後 FOR 0.79，95% CI 0.67–0.94」），
+有分母的要寫出分母。最後一條如果原文有講限制或作者自己的但書，就寫那一條。
+
+規則：不要誇大、不要寫成治療建議、不要出現「保證」「最有效」這類字眼；
+原文沒有的數字不要自己補；相對風險與絕對風險不要混用；
+關聯性研究不要寫成因果。`;
 
   const res = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
@@ -147,6 +169,9 @@ const esc = (s) => String(s ?? "").replace(/"/g, '\\"');
 
 export function buildMarkdown(paper, topic, abstract, zh) {
   const takeaways = zh?.takeaways ?? ["（待補：一句話講清楚這篇在說什麼）"];
+  const doiUrl = paper.doi ? `https://doi.org/${paper.doi}` : paper.url;
+  const reading = [`- [原始論文：${paper.journal}](${doiUrl})`];
+  if (paper.doi) reading.push(`- [PubMed（PMID ${paper.pmid}）](${paper.url})`);
   return `---
 pmid: "${paper.pmid}"
 title: "${esc(zh?.titleZh || paper.title)}"
@@ -164,19 +189,18 @@ draft: true
 fetchedAt: "${new Date().toISOString().slice(0, 10)}"
 ---
 
-## 這篇研究在問什麼？
+## 小王子醫師說
 
-${zh?.whatItAsks ?? "（待補）"}
+（待補：李醫師親自寫，三百到七百字，口語，像在門診講話。
 
-## 研究發現了什麼？
+先講這則消息值得注意的地方，再講不要過度解讀的地方，最後講今天的處置要不要因此改變。
+不要用破折號，粗體少用，引號只給真正的引文，不要每一段都用一句漂亮的話收尾。）
 
-${zh?.whatItFound ?? "（待補）"}
+## 延伸閱讀
 
-## 小王子醫師的解讀
+${reading.join("\n")}
 
-（待補：這個結果在你的診間代表什麼？哪些人適用、哪些人先別急著套用？）
-
-<!-- 原文摘要（僅供審稿參考，上線前請刪除或改寫；請勿整段照登以免侵犯期刊著作權）
+<!-- 原文摘要（僅供審稿參考，上線前請刪除；請勿整段照登以免侵犯期刊著作權）
 ${abstract || "（這篇沒有公開摘要）"}
 -->
 `;

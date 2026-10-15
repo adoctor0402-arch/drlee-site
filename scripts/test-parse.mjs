@@ -26,7 +26,7 @@ const summary = {
 
 const p = parseSummary(summary, "40123456");
 assert.equal(p.pmid, "40123456");
-assert.equal(p.journal, "Hum Reprod");
+assert.equal(p.journal, "Human Reproduction", "期刊縮寫要展開成全名，跟站上其他文章一致");
 assert.equal(p.pubdate, "2026-08-14");
 assert.equal(p.firstAuthor, "Chen Y");
 assert.equal(p.doi, "10.1093/humrep/deaf123");
@@ -56,13 +56,28 @@ assert.equal(abstract.includes("Author information"), false, "不要抓到作者
 const md = buildMarkdown(p, { label: "凍卵・生育保存" }, abstract, {
   titleZh: "凍卵後真的回來用的人，結果如何？",
   takeaways: ["重點一", "重點二"],
-  whatItAsks: "問題",
-  whatItFound: "發現",
 });
 assert.equal(md.includes('pmid: "40123456"'), true);
 assert.equal(md.includes("draft: true"), true, "抓回來一定是待審核狀態");
 assert.equal(md.includes('title: "凍卵後真的回來用的人，結果如何？"'), true);
-assert.equal(md.includes("小王子醫師的解讀"), true);
+
+// 產出的體例必須跟網站現行的國際消息格式一致。
+// 2026-10 改版後腳本一度還在用舊的三段式，這幾條就是防止再漂移。
+assert.equal(md.includes("## 小王子醫師說"), true, "必須有『小王子醫師說』這一節");
+assert.equal(md.includes("## 延伸閱讀"), true, "必須有『延伸閱讀』這一節");
+assert.equal(
+  md.indexOf("## 小王子醫師說") < md.indexOf("## 延伸閱讀"),
+  true,
+  "醫師說要排在延伸閱讀前面",
+);
+assert.equal(
+  md.includes("- [原始論文：Human Reproduction]"),
+  true,
+  "延伸閱讀第一行一定是原始論文連結，而且要帶期刊名",
+);
+for (const stale of ["這篇研究在問什麼", "研究發現了什麼", "小王子醫師的解讀"]) {
+  assert.equal(md.includes(stale), false, `舊體例的「${stale}」不該再出現`);
+}
 
 const mdNoAi = buildMarkdown(p, { label: "凍卵・生育保存" }, "", null);
 assert.equal(mdNoAi.includes("（待補"), true, "沒有 AI 草稿時要留待補欄位");

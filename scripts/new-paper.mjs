@@ -13,11 +13,9 @@
  *   journal   期刊
  *   pubdate   YYYY-MM-DD
  *   firstAuthor / doi / url / topic
- *   takeaways 三十秒看懂（陣列）
- *   asks      這篇研究在問什麼
- *   found     研究發現了什麼
- *   reading   小王子醫師的解讀（留空就是「待補」）
- *   sources   其他來源連結 [{text,url}]
+ *   takeaways 三十秒看懂（陣列，帶效應量與信賴區間）
+ *   says      小王子醫師說（留空就是「待補」；這一段一定要李醫師自己寫過才上架）
+ *   sources   延伸閱讀的其他連結 [{text,url}]；原始論文那一行會自動產生
  */
 
 import fs from "node:fs";
@@ -31,7 +29,10 @@ const esc = (s) => String(s ?? "").replace(/"/g, '\\"');
 
 export function paperMarkdown(p) {
   const takeaways = p.takeaways?.length ? p.takeaways : ["（待補：一句話講清楚這篇在說什麼）"];
-  const sources = (p.sources ?? []).map((s) => `- [${s.text}](${s.url})`).join("\n");
+  const doiUrl = p.doi ? `https://doi.org/${p.doi}` : p.url;
+  const reading = [`- [原始論文：${p.journal}](${doiUrl})`];
+  if (p.doi && p.url) reading.push(`- [PubMed（PMID ${p.id}）](${p.url})`);
+  for (const s of p.sources ?? []) reading.push(`- [${s.text}](${s.url})`);
   return `---
 pmid: "${esc(p.id)}"
 title: "${esc(p.title)}"
@@ -49,18 +50,14 @@ draft: true
 fetchedAt: "${new Date().toISOString().slice(0, 10)}"
 ---
 
-## 這篇研究在問什麼？
+## 小王子醫師說
 
-${p.asks || "（待補）"}
+${p.says || "（待補：李醫師親自寫，三百到七百字，口語，像在門診講話。\n\n先講這則消息值得注意的地方，再講不要過度解讀的地方，最後講今天的處置要不要因此改變。\n不要用破折號，粗體少用，引號只給真正的引文，不要每一段都用一句漂亮的話收尾。）"}
 
-## 研究發現了什麼？
+## 延伸閱讀
 
-${p.found || "（待補）"}
-
-## 小王子醫師的解讀
-
-${p.reading || "（待補：這個結果在你的診間代表什麼？哪些人適用、哪些人先別急著套用？）"}
-${sources ? `\n## 延伸閱讀\n\n${sources}\n` : ""}`;
+${reading.join("\n")}
+`;
 }
 
 async function readInput() {
