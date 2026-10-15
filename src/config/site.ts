@@ -63,7 +63,8 @@ export const branches: Branch[] = [
     area: "台中市",
     phone: "(04) 2234-7057",
     phoneHref: "tel:+886422347057",
-    bookingUrl: withUtm("https://www.ivftaiwan.tw/appointment/taichung"),
+    // 直接進李醫師在台中總院的診次；只到 /appointment/taichung 會停在院區總表，病人還要自己再找一次
+    bookingUrl: withUtm("https://www.ivftaiwan.tw/appointment/taichung/doctor/%E6%9D%8E%E4%BF%8A%E9%80%B8"),
   },
   {
     id: "banqiao",
@@ -71,8 +72,8 @@ export const branches: Branch[] = [
     area: "新北市板橋區",
     phone: "(02) 2258-6208",
     phoneHref: "tel:+886222586208",
-    // step2 深連結會被醫院系統彈回第一步，必須用這個穩定入口
-    bookingUrl: withUtm("https://www.ivftaiwan.tw/appointment/taipei"),
+    // 板橋在醫院系統裡的代號是 taipei。/doctor/李俊逸 這層是穩定的，step2 那種深連結才會被彈回第一步
+    bookingUrl: withUtm("https://www.ivftaiwan.tw/appointment/taipei/doctor/%E6%9D%8E%E4%BF%8A%E9%80%B8"),
   },
 ];
 

@@ -114,7 +114,7 @@ function BookingSheet({ isOpen, onClose, lastBranch, setLastBranch }: SheetProps
           </span>
         </a>
 
-        <p className="mt-6 text-xs uppercase tracking-[0.2em] text-muted">或直接到院區掛號系統</p>
+        <p className="mt-6 text-xs uppercase tracking-[0.2em] text-muted">或直接挑院區</p>
 
         <div className="mt-3 grid gap-3">
           {branches.map((b) => (
@@ -135,7 +135,7 @@ function BookingSheet({ isOpen, onClose, lastBranch, setLastBranch }: SheetProps
                     <span className="rounded-full bg-gold/15 px-2 py-0.5 text-xs text-[#8a6a2c]">上次選擇</span>
                   )}
                 </div>
-                <div className="mt-0.5 text-sm text-muted">{b.area}・線上掛號</div>
+                <div className="mt-0.5 text-sm text-muted">{b.area}・直接開我的診次</div>
               </div>
               <span className="text-xl text-gold transition-transform group-hover:translate-x-1" aria-hidden>
                 →
