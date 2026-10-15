@@ -79,6 +79,13 @@ export const branches: Branch[] = [
 // 李俊逸醫師在茂盛醫院官網的介紹與掛號頁（兩院區門診表都在這裡）
 export const doctorPage = withUtm("https://www.ivftaiwan.tw/drgroup/section/detail/2");
 
+// 李俊逸醫師的音樂作品，藝人名 Moonlight Clinic
+export const musicLinks = [
+  { label: "Spotify", href: "https://open.spotify.com/artist/0YHJFERyc8lAOyhFAciYBu" },
+  { label: "Apple Music", href: "https://music.apple.com/tw/artist/moonlight-clinic/6787312524" },
+  { label: "YouTube Music", href: "https://music.youtube.com/channel/UCD2vaWJc3rE_BCH_LxVk4CA" },
+];
+
 export const hospitalLinks = {
   schedule: "https://www.ivftaiwan.tw/guide/schedule",
   firstVisitGuide: "https://www.ivftaiwan.tw/guide",

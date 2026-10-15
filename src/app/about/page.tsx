@@ -6,7 +6,7 @@ import { buttonClass } from "@/components/button-class";
 import { Crown } from "@/components/logo";
 import { Sticker } from "@/components/prince";
 import { approach } from "@/config/content";
-import { site } from "@/config/site";
+import { musicLinks, site } from "@/config/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/about" },
@@ -56,6 +56,25 @@ export default function AboutPage() {
               再一起決定下一步。
             </p>
             <p className="font-hand text-2xl text-deep">每一個生命，都是獨一無二的星星 <span className="text-blush">♥</span></p>
+            <div className="border-t border-deep/[0.08] pt-6 text-[15.5px] leading-[1.9] text-muted">
+              <p>
+                我也寫歌，用 <span className="font-semibold text-deep">Moonlight Clinic</span>{" "}
+                這個名字發表。那些歌寫的是診間裡來不及說完的部分。
+              </p>
+              <p className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
+                {musicLinks.map((m) => (
+                  <a
+                    key={m.label}
+                    href={m.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline decoration-gold/60 underline-offset-4 transition-colors hover:text-deep"
+                  >
+                    {m.label} ↗
+                  </a>
+                ))}
+              </p>
+            </div>
           </div>
           <div className="mx-auto w-full max-w-xs">
             <Sticker name="journey" card />
