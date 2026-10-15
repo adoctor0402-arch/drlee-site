@@ -71,7 +71,8 @@ export const branches: Branch[] = [
     area: "新北市板橋區",
     phone: "(02) 2258-6208",
     phoneHref: "tel:+886222586208",
-    bookingUrl: withUtm("https://www.ivftaiwan.tw/appointment/taipei/department/step2"),
+    // step2 深連結會被醫院系統彈回第一步，必須用這個穩定入口
+    bookingUrl: withUtm("https://www.ivftaiwan.tw/appointment/taipei"),
   },
 ];
 
