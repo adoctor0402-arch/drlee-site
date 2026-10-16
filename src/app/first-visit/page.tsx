@@ -60,7 +60,7 @@ export default function FirstVisitPage() {
             <div>
               <h2 className="font-serif text-3xl font-semibold text-deep sm:text-4xl">可以先準備的東西</h2>
               <p className="mt-4 max-w-2xl text-[16px] leading-relaxed text-muted">
-                下面這些有就帶，沒有也沒關係 —— 缺的部分，我們會依你的情況安排。
+                下面這些有就帶，沒有也沒關係。缺的部分，我們會依你的情況安排。
               </p>
             </div>
             <div className="hidden w-40 shrink-0 sm:block lg:w-48">
