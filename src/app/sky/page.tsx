@@ -10,7 +10,10 @@ export const metadata: Metadata = {
     title: "你們的星空｜自然懷孕機率試算",
     description: "7 個問題，估算你們一年內自然懷孕並生下寶寶的機率。小王子醫師 Dr. Lee",
     type: "website",
+    url: "/sky",
+    images: [{ url: "/og-sky.png", width: 1200, height: 630, alt: "你們的星空：被診斷不孕之後，還有機會自然懷孕嗎？" }],
   },
+  twitter: { card: "summary_large_image", images: ["/og-sky.png"] },
 };
 
 export default function SkyPage() {
