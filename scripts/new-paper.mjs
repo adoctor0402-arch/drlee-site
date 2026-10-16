@@ -27,7 +27,28 @@ const OUT_DIR = path.join(__dirname, "..", "content", "observatory");
 
 const esc = (s) => String(s ?? "").replace(/"/g, '\\"');
 
+/**
+ * 2026-10-16：舊欄位 asks／found／reading 已經合併成 says，而且 says 現在刻意不由 AI 代筆。
+ * 每日排程的提示詞如果還在傳舊欄位，這裡要大聲講出來，不要靜靜丟掉讓它白做二十分鐘，
+ * 更不要讓它回報「解讀已寫好」而檔案裡其實是待補。
+ */
+function warnLegacyFields(p) {
+  const legacy = ["asks", "found", "reading"].filter((k) => p[k]);
+  if (!legacy.length && !p.says) return;
+  const lines = ["", "⚠️  規則已經改了，請讀 scripts/observatory-rules.md（2026-10-16 那一段）。"];
+  if (legacy.length) {
+    lines.push(`   你傳了已經廢除的欄位：${legacy.join("、")}。這些內容不會寫進檔案。`);
+  }
+  if (p.says) {
+    lines.push("   你傳了 says。「小王子醫師說」一律不由 AI 代筆，這個欄位已被忽略。");
+  }
+  lines.push("   「小王子醫師說」會留成待補，由李醫師自己寫。takeaways 照你傳的寫入。");
+  lines.push("   回報給李醫師的時候，不要說解讀已經寫好了。", "");
+  console.warn(lines.join("\n"));
+}
+
 export function paperMarkdown(p) {
+  warnLegacyFields(p);
   const takeaways = p.takeaways?.length ? p.takeaways : ["（待補：一句話講清楚這篇在說什麼）"];
   const doiUrl = p.doi ? `https://doi.org/${p.doi}` : p.url;
   const reading = [`- [原始論文：${p.journal}](${doiUrl})`];
@@ -52,7 +73,7 @@ fetchedAt: "${new Date().toISOString().slice(0, 10)}"
 
 ## 小王子醫師說
 
-${p.says || "（待補：李醫師親自寫，三百到七百字，口語，像在門診講話。\n\n先講這則消息值得注意的地方，再講不要過度解讀的地方，最後講今天的處置要不要因此改變。\n不要用破折號，粗體少用，引號只給真正的引文，不要每一段都用一句漂亮的話收尾。）"}
+${"（待補：李醫師親自寫，三百到七百字，口語，像在門診講話。\n\n先講這則消息值得注意的地方，再講不要過度解讀的地方，最後講今天的處置要不要因此改變。\n不要用破折號，粗體少用，引號只給真正的引文，不要每一段都用一句漂亮的話收尾。）"}
 
 ## 延伸閱讀
 
