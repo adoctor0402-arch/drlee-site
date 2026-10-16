@@ -8,7 +8,7 @@
  * 所有抓回來的檔案都是 draft: true（不會出現在網站上），
  * 醫師審核、補上中文重點後把 draft 改成 false，才會上線。
  *
- * 若環境變數有 ANTHROPIC_API_KEY，會順便請 Claude 產生中文標題與白話重點的「草稿」，
+ * 不會自動產生中文草稿。中文標題與重點一律由每週審稿流程查核後撰寫。
  * 仍然是 draft，仍然需要醫師確認。
  */
 
@@ -116,65 +116,29 @@ export async function fetchAbstract(pmid) {
   return parseAbstractText(await getText(`${EUTILS}/efetch.fcgi?${params}`));
 }
 
-/** 選用：請 Claude 產生中文草稿 */
-async function draftChinese(paper, abstract) {
-  const key = process.env.ANTHROPIC_API_KEY;
-  if (!key || !abstract) return null;
-  const model = process.env.ANTHROPIC_MODEL || "claude-sonnet-4-5";
-  const prompt = `你是協助一位台灣生殖醫學醫師整理文獻的助理。以下是一篇論文的標題與摘要。
-
-標題：${paper.title}
-期刊：${paper.journal}
-摘要：${abstract}
-
-請用台灣繁體中文輸出 JSON（不要其他文字）：
-{
-  "titleZh": "中文標題，20 字內，用病人看得懂的說法，盡量寫成一個問句",
-  "takeaways": ["條列一", "條列二", "條列三", "條列四"]
-}
-
-takeaways 寫法：三到四條，每一條是完整的一句話，交代研究設計、樣本數與主要結果。
-數字要帶上效應量與信賴區間（例如「校正後 FOR 0.79，95% CI 0.67–0.94」），
-有分母的要寫出分母。最後一條如果原文有講限制或作者自己的但書，就寫那一條。
-
-規則：不要誇大、不要寫成治療建議、不要出現「保證」「最有效」這類字眼；
-原文沒有的數字不要自己補；相對風險與絕對風險不要混用；
-關聯性研究不要寫成因果。`;
-
-  const res = await fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      "x-api-key": key,
-      "anthropic-version": "2023-06-01",
-    },
-    body: JSON.stringify({ model, max_tokens: 1000, messages: [{ role: "user", content: prompt }] }),
-  });
-  if (!res.ok) {
-    console.warn(`  ⚠ Claude API ${res.status}，這篇先留空白由醫師填`);
-    return null;
-  }
-  const data = await res.json();
-  const text = data?.content?.map((c) => c.text ?? "").join("") ?? "";
-  const match = text.match(/\{[\s\S]*\}/);
-  if (!match) return null;
-  try {
-    return JSON.parse(match[0]);
-  } catch {
-    return null;
-  }
-}
+/**
+ * 這裡原本會呼叫 Claude API 產生中文標題與重點草稿，已經刻意移除。
+ *
+ * 原因：prompt 要求它「數字要帶上效應量與信賴區間」，但摘要裡沒有那些數字時，
+ * 它仍然會生出看起來很專業的內容。2026-10-16 查核時發現 jecs-house-dust 那一篇的
+ * 各組勝算比、趨勢檢定 p 值、22 個校正變項與 r = 0.785 全都無法對上任何公開資料，
+ * 因為那篇當時只有摘要、全文未公開。空白的「待補」不會騙人，錯的信賴區間會。
+ *
+ * 現在的分工：這支腳本只負責抓論文與建立骨架，中文標題與重點由每週的審稿流程
+ * 回原始論文查核後撰寫（見 scripts/weekly-review.md）。
+ * 要加回自動草稿前，請先想清楚誰來為那些數字負責。
+ */
 
 const esc = (s) => String(s ?? "").replace(/"/g, '\\"');
 
-export function buildMarkdown(paper, topic, abstract, zh) {
-  const takeaways = zh?.takeaways ?? ["（待補：一句話講清楚這篇在說什麼）"];
+export function buildMarkdown(paper, topic, abstract) {
+  const takeaways = ["（待補：一句話講清楚這篇在說什麼）"];
   const doiUrl = paper.doi ? `https://doi.org/${paper.doi}` : paper.url;
   const reading = [`- [原始論文：${paper.journal}](${doiUrl})`];
   if (paper.doi) reading.push(`- [PubMed（PMID ${paper.pmid}）](${paper.url})`);
   return `---
 pmid: "${paper.pmid}"
-title: "${esc(zh?.titleZh || paper.title)}"
+title: "${esc(paper.title)}"
 titleEn: "${esc(paper.title)}"
 journal: "${esc(paper.journal)}"
 pubdate: "${paper.pubdate}"
@@ -253,10 +217,9 @@ async function main() {
       } catch {
         /* 沒有摘要也沒關係 */
       }
-      const zh = await draftChinese(paper, abstract);
       const file = path.join(OUT_DIR, `${paper.pmid}.md`);
       console.log(`  + ${paper.journal}｜${paper.title.slice(0, 60)}…`);
-      if (!DRY) fs.writeFileSync(file, buildMarkdown(paper, topic, abstract, zh));
+      if (!DRY) fs.writeFileSync(file, buildMarkdown(paper, topic, abstract));
       existing.add(paper.pmid);
       added++;
     }

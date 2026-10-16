@@ -17,10 +17,9 @@ jobs:
         with:
           node-version: 22
 
+      # 這一步只抓論文、建立骨架，不產生任何中文內容。
+      # 中文標題與重點由每週審稿流程查核原始論文後撰寫，見 scripts/weekly-review.md。
       - name: 抓取 PubMed 新論文
-        env:
-          # 選填：設了這個 secret，就會順便產生中文草稿（仍然是待審核狀態）
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/fetch-papers.mjs
 
       - name: 把待審核的論文存回 repo

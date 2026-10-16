@@ -53,13 +53,14 @@ const abstract = parseAbstractText(abstractText);
 assert.equal(abstract.includes("STUDY QUESTION"), true, "要抓到摘要本文");
 assert.equal(abstract.includes("Author information"), false, "不要抓到作者單位");
 
-const md = buildMarkdown(p, { label: "凍卵・生育保存" }, abstract, {
-  titleZh: "凍卵後真的回來用的人，結果如何？",
-  takeaways: ["重點一", "重點二"],
-});
+const md = buildMarkdown(p, { label: "凍卵・生育保存" }, abstract);
 assert.equal(md.includes('pmid: "40123456"'), true);
 assert.equal(md.includes("draft: true"), true, "抓回來一定是待審核狀態");
-assert.equal(md.includes('title: "凍卵後真的回來用的人，結果如何？"'), true);
+
+// 腳本不再自動產中文標題與重點（見 fetch-papers.mjs 裡的說明）。
+// 標題保持原文，重點保持待補，由每週審稿流程查核後撰寫。
+assert.equal(md.includes(`title: "${p.title}"`), true, "標題要保持原文，不要自動翻譯");
+assert.equal(md.includes("（待補"), true, "重點欄位要留待補");
 
 // 產出的體例必須跟網站現行的國際消息格式一致。
 // 2026-10 改版後腳本一度還在用舊的三段式，這幾條就是防止再漂移。
@@ -79,7 +80,9 @@ for (const stale of ["這篇研究在問什麼", "研究發現了什麼", "小�
   assert.equal(md.includes(stale), false, `舊體例的「${stale}」不該再出現`);
 }
 
-const mdNoAi = buildMarkdown(p, { label: "凍卵・生育保存" }, "", null);
-assert.equal(mdNoAi.includes("（待補"), true, "沒有 AI 草稿時要留待補欄位");
+// 沒有摘要的時候也要照樣產出骨架
+const mdNoAbstract = buildMarkdown(p, { label: "凍卵・生育保存" }, "");
+assert.equal(mdNoAbstract.includes("（待補"), true, "沒有摘要時一樣留待補欄位");
+assert.equal(mdNoAbstract.includes("draft: true"), true);
 
 console.log("✓ PubMed 解析與 Markdown 產生測試通過");
