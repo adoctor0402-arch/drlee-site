@@ -1,10 +1,23 @@
 name: 星際觀測站 — 抓取新論文
 
+# 2026-10-16：自動排程停用，只留手動觸發。
+#
+# 原因：抓論文有兩條管線同時寫進 content/observatory/，這一條用 PMID 當檔名，
+# 每日排程的 new-paper.mjs 用自訂代號，所以同一篇研究被收過兩次
+# （42567929 與 natmed-dnm-art-2026 都是那篇 Nature Medicine 的新生突變研究）。
+#
+# 留下的是每日排程那一條，因為它會回原始論文核對再寫中文，這一條不查核、
+# 產出的是英文骨架，堆在草稿區還是要有人從零開始讀。
+#
+# 這一條原本獨有的覆蓋範圍（NEJM、Lancet、JAMA、BMJ、Nat Med、Hum Reprod Open、
+# Human Fertility、Reprod Biol Endocrinol）已經補進上游的「Top journal daily digest」
+# 排程，綜合期刊那幾本有加主題條件，不然會塞滿別科的論文。
+#
+# 補不回來的是 30 天回溯。這一條往回看 30 天會撿到索引延遲的論文，
+# 每日摘要只查前一天。想補那段空窗的時候，到 GitHub 的 Actions 分頁手動按
+# Run workflow 就會跑一次，不會自動跑。
 on:
-  schedule:
-    # 每週一台灣時間早上 8:00（UTC 00:00）
-    - cron: "0 0 * * 1"
-  workflow_dispatch: {} # 也可以在 GitHub 上手動按一下就跑
+  workflow_dispatch: {} # 只能手動觸發
 
 jobs:
   fetch:

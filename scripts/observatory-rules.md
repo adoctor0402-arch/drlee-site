@@ -118,10 +118,24 @@ JSON 欄位（2026-10-16 起，舊的 `asks`／`found`／`reading` 三欄已經�
 
 `draft` 一律保持 `true`。上架是李醫師按過之後的事。
 
-**注意有兩條管線寫進同一個資料夾**：這支腳本用自訂 id 當檔名，
-GitHub Action 的 `fetch-papers.mjs` 用 PMID 當檔名。同一篇研究曾經因此被收兩次
-（`42567929` 與 `natmed-dnm-art-2026` 是同一篇 Nature Medicine）。
-產生前除了比對檔名，也要比對 DOI。
+**2026-10-16 起只有這一條管線在自動跑。** GitHub Action（`fetch-papers.mjs`）的
+自動排程已經停用，只留手動觸發，原因寫在 `.github/workflows/observatory.yml` 的註解裡。
+
+簡單說：兩條管線都寫進這個資料夾，但命名規則不同（Action 用 PMID，這支用自訂 id），
+所以撞車看不見，同一篇 Nature Medicine 的新生突變研究被收過兩次
+（`42567929` 與 `natmed-dnm-art-2026`）。留下這一條是因為它會回原始論文核對，
+Action 不查核。
+
+Action 原本獨有的期刊覆蓋已經補進上游的「Top journal daily digest」排程：
+專科期刊 12 本照原查法，綜合期刊 5 本（NEJM、Lancet、JAMA、BMJ、Nat Med）
+單獨一組並加生殖相關主題條件，不加會塞滿別科的論文。
+
+**沒補回來的是 30 天回溯。** Action 往回看 30 天，會撿到 PubMed 索引延遲的論文；
+每日摘要只查前一天，錯過就錯過。察覺有空窗的時候，去 GitHub 的 Actions 分頁
+手動按一次 Run workflow，它會補抓 30 天。手動補抓之後那幾篇是英文骨架，
+而且不會去重，所以產生前仍然要比對 DOI 和 PMID。
+
+**不要因為看到那個停用的 workflow 就把排程打開。** 要打開之前先解決去重。
 
 ---
 
